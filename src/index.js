@@ -7,6 +7,7 @@ export default (config) => {
 
   // Tweak the searchlib config to use the middleware instead of the index
   globalsearch.elastic_index = '_es/globalsearch';
+  globalsearch.index_name = 'data_searchui';
 
   return config;
 };

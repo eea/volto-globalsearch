@@ -31,7 +31,8 @@ const globalSearchConfig = {
   ...download,
   ...clusterParams,
 
-  sourceExcludedFields: ['fulltext', 'embedding'], // don't need these in results
+  sourceExcludedFields: ['embedding'], // don't need these in results
+  // 'fulltext',
 
   // these are used to "clean" the values in the results.
   field_filters: {
