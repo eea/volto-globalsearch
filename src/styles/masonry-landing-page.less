@@ -1,0 +1,145 @@
+.ui.container.stackable.two.column.grid.body-content {
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+.ui.container.one.column.grid {
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+.ui.container.grid.body-footer {
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+.tile {
+  padding: 18px;
+  margin: 0 12px 12px 0;
+  @media only screen and (min-width: 1536px) {
+    width: 23%;
+  }
+  @media only screen and (min-width: 900px) and (max-width: 1535px) {
+    width: 31%;
+  }
+  @media only screen and (min-width: 620px) and (max-width: 900px) {
+    width: 47%;
+  }
+  @media only screen and (max-width: 620px) {
+    width: 95%;
+  }
+
+  h2 {
+    border-bottom: 1px solid white;
+    margin: 0 0 1em 0;
+    margin-bottom: 0;
+    font-size: 200%;
+    font-weight: bold;
+    line-height: 1.3;
+  }
+
+  span {
+    font-size: 250%;
+    font-weight: bold;
+  }
+
+  &.available_content {
+    height: 434px;
+
+    h2 {
+      border-bottom: 1px solid #115c57;
+      color: #115c57;
+      font-size: 200%;
+    }
+
+    h3 {
+      color: #115c57;
+    }
+
+    span {
+      color: #1b928f;
+    }
+  }
+
+  &.countries {
+    height: 434px;
+    background: #1c65a4 url('./img/countries-bg.png') no-repeat center center;
+    background-position-y: 0;
+    color: white;
+
+    h2 {
+      padding-top: 180px;
+    }
+  }
+
+  &.content_types {
+    height: 300px;
+    background: #b3548d url('./img/content-types-bg.png') no-repeat 85% 55%;
+    color: white;
+  }
+
+  &.picture {
+    height: 434px;
+    background: #1b928f url('./img/search-album-slideshow-bg.png') no-repeat
+      center center;
+    color: white;
+  }
+
+  &.topics {
+    height: 300px;
+    background: #fbaf33 url('./img/topics-bg.png') no-repeat 85% 25%;
+    color: white;
+  }
+
+  &.time_coverage {
+    height: 300px;
+    background: #b0c649;
+    color: white;
+
+    p {
+      text-align: right;
+
+      span.label {
+        font-size: 150%;
+        font-weight: normal;
+      }
+    }
+  }
+
+  &.organisations {
+    height: 300px;
+    background: #babbdb url('./img/organisations-bg.png') no-repeat 85px 100px;
+    color: white;
+  }
+
+  &.latest {
+    height: 434px;
+
+    h2 {
+      border-bottom: 1px solid #1b928f;
+      color: #1b928f;
+      font-size: 250%;
+    }
+
+    ul {
+      padding-left: 0;
+      list-style-type: none;
+    }
+
+    li {
+      margin-bottom: 1em;
+
+      span {
+        font-size: 12px;
+        font-weight: normal;
+      }
+
+      a {
+        display: block;
+        color: #1b928f;
+        font-size: 12px;
+        font-weight: bold;
+      }
+    }
+  }
+}
