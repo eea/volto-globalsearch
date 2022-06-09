@@ -3,8 +3,8 @@ import Masonry from 'react-masonry-component';
 
 import { runRequest } from '@eeacms/search';
 
-import objectProvidesWhitelist from '../json/objectProvidesWhitelist.json';
-import spatialWhitelist from '../json/spatialWhitelist.json';
+import objectProvidesWhitelist from '../config/json/objectProvidesWhitelist.json';
+import spatialWhitelist from '../config/json/spatialWhitelist.json';
 
 import { getTodayWithTime } from '../utils';
 
