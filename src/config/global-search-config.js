@@ -15,7 +15,7 @@ import typesWhitelist from './json/typesWhitelist.json';
 
 const globalSearchConfig = {
   title: 'Global search and catalogue',
-  layoutComponent: 'FilterAsideLayout',
+  layoutComponent: 'TopFilterLayout',
   contentBodyComponent: 'FilterAsideContentView',
   enableNLP: true, // enables NLP capabilities
   facetsListComponent: 'VerticalCardsModalFacets',
