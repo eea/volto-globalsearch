@@ -194,7 +194,7 @@ const facets = [
   fixedRangeFacet({
     wrapper: 'ModalFacetWrapper',
     field: 'readingTime',
-    label: 'Reading time (minutes)',
+    label: 'Reading time',
     rangeType: 'fixed',
     isMulti: true,
     ranges: [
