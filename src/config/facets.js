@@ -60,8 +60,8 @@ const facets = [
     isMulti: true,
     label: 'Topics',
     blacklist: topicsBlacklist,
-    factory: 'MultiTermListFacet',
-    wrapper: 'ModalFacetWrapper',
+    factory: 'MultiTermFacet',
+    // wrapper: 'ModalFacetWrapper',
     show: 10000,
     showAllOptions: true, // show all options (even if 0) in modal facet
     // factory: 'sui.Facet',
@@ -72,9 +72,9 @@ const facets = [
     isMulti: true,
     label: 'Countries',
     whitelist: spatialWhitelist,
-    wrapper: 'ModalFacetWrapper',
+    // wrapper: 'ModalFacetWrapper',
     show: 10000,
-    factory: 'MultiTermListFacet',
+    factory: 'MultiTermFacet',
     iconsFamily: 'Countries',
     enableExact: true,
     sortOn: 'value',
@@ -84,9 +84,9 @@ const facets = [
     isFilterable: true,
     isMulti: true,
     label: 'Section',
-    wrapper: 'ModalFacetWrapper',
+    // wrapper: 'ModalFacetWrapper',
     show: 10000,
-    factory: 'MultiTermListFacet',
+    factory: 'MultiTermFacet',
     showInFacetsList: false,
   }),
 
@@ -96,9 +96,9 @@ const facets = [
     isMulti: true,
     label: 'Regions/Places/Cities/Seas...',
     blacklist: placesBlacklist,
-    wrapper: 'ModalFacetWrapper',
+    // wrapper: 'ModalFacetWrapper',
     show: 10000,
-    factory: 'MultiTermListFacet',
+    factory: 'MultiTermFacet',
     showAllOptions: true, // show all options (even if 0) in modal facet
   }),
   multiTermFacet({
@@ -108,8 +108,8 @@ const facets = [
     label: 'Content types',
     iconsFamily: 'Content types',
     //whitelist: objectProvidesWhitelist,
-    wrapper: 'ModalFacetWrapper',
-    factory: 'MultiTermListFacet',
+    // wrapper: 'ModalFacetWrapper',
+    factory: 'MultiTermFacet',
     optionsFilter: 'typesForClustersOptionsFilter',
   }),
   multiTermFacet({
@@ -117,12 +117,12 @@ const facets = [
     isFilterable: false,
     isMulti: true,
     label: 'Sources',
-    wrapper: 'ModalFacetWrapper',
-    factory: 'MultiTermListFacet',
+    // wrapper: 'ModalFacetWrapper',
+    factory: 'MultiTermFacet',
     iconsFamily: 'Sources',
   }),
   histogramFacet({
-    wrapper: 'ModalFacetWrapper',
+    // wrapper: 'ModalFacetWrapper',
     field: 'year',
     // isFilterable: false,
     isMulti: true,
@@ -157,7 +157,7 @@ const facets = [
   }),
 
   histogramFacet({
-    wrapper: 'ModalFacetWrapper',
+    // wrapper: 'ModalFacetWrapper',
     field: 'time_coverage',
     // isFilterable: false,
     isMulti: true,
@@ -192,7 +192,7 @@ const facets = [
   }),
 
   fixedRangeFacet({
-    wrapper: 'ModalFacetWrapper',
+    // wrapper: 'ModalFacetWrapper',
     field: 'readingTime',
     label: 'Reading time',
     rangeType: 'fixed',
@@ -233,7 +233,7 @@ const facets = [
     },
   }),
   multiTermFacet({
-    wrapper: 'ModalFacetWrapper',
+    // wrapper: 'ModalFacetWrapper',
     field: 'language',
     isFilterable: false,
     isMulti: true,
@@ -242,7 +242,7 @@ const facets = [
       values: ['en'],
       type: 'any',
     },
-    factory: 'MultiTermListFacet',
+    factory: 'MultiTermFacet',
     facetValues: [
       'ar',
       'sr',
