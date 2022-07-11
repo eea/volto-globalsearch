@@ -11,6 +11,43 @@ import placesBlacklist from './json/placesBlacklist.json';
 import topicsBlacklist from './json/topicsBlacklist.json';
 import { getTodayWithTime } from '../utils';
 
+const languageCodes = [
+  'ar',
+  'sr',
+  'sq',
+  'bg',
+  'bs',
+  'cs',
+  'hr',
+  'da',
+  'nl',
+  'el',
+  'en',
+  'et',
+  'fi',
+  'fr',
+  'ga',
+  'de',
+  'hu',
+  'is',
+  'it',
+  'lv',
+  'lt',
+  'mk',
+  'mt',
+  'no',
+  'pl',
+  'pt',
+  'ro',
+  'ru',
+  'sh',
+  'sk',
+  'sl',
+  'es',
+  'sv',
+  'tr',
+];
+
 const facets = [
   booleanFacet(() => ({
     field: 'IncludeArchived',
@@ -60,11 +97,9 @@ const facets = [
     isMulti: true,
     label: 'Topics',
     blacklist: topicsBlacklist,
-    factory: 'MultiTermFacet',
-    // wrapper: 'ModalFacetWrapper',
     show: 10000,
     showAllOptions: true, // show all options (even if 0) in modal facet
-    // factory: 'sui.Facet',
+    alwaysVisible: true,
   }),
   multiTermFacet({
     field: 'spatial',
@@ -72,21 +107,18 @@ const facets = [
     isMulti: true,
     label: 'Countries',
     whitelist: spatialWhitelist,
-    // wrapper: 'ModalFacetWrapper',
     show: 10000,
-    factory: 'MultiTermFacet',
     iconsFamily: 'Countries',
     enableExact: true,
     sortOn: 'value',
+    alwaysVisible: true,
   }),
   multiTermFacet({
     field: 'op_cluster',
     isFilterable: true,
     isMulti: true,
     label: 'Section',
-    // wrapper: 'ModalFacetWrapper',
     show: 10000,
-    factory: 'MultiTermFacet',
     showInFacetsList: false,
   }),
 
@@ -96,9 +128,7 @@ const facets = [
     isMulti: true,
     label: 'Regions/Places/Cities/Seas...',
     blacklist: placesBlacklist,
-    // wrapper: 'ModalFacetWrapper',
     show: 10000,
-    factory: 'MultiTermFacet',
     showAllOptions: true, // show all options (even if 0) in modal facet
   }),
   multiTermFacet({
@@ -108,8 +138,6 @@ const facets = [
     label: 'Content types',
     iconsFamily: 'Content types',
     //whitelist: objectProvidesWhitelist,
-    // wrapper: 'ModalFacetWrapper',
-    factory: 'MultiTermFacet',
     optionsFilter: 'typesForClustersOptionsFilter',
   }),
   multiTermFacet({
@@ -117,12 +145,9 @@ const facets = [
     isFilterable: false,
     isMulti: true,
     label: 'Sources',
-    // wrapper: 'ModalFacetWrapper',
-    factory: 'MultiTermFacet',
     iconsFamily: 'Sources',
   }),
   histogramFacet({
-    // wrapper: 'ModalFacetWrapper',
     field: 'year',
     // isFilterable: false,
     isMulti: true,
@@ -157,9 +182,7 @@ const facets = [
   }),
 
   histogramFacet({
-    // wrapper: 'ModalFacetWrapper',
     field: 'time_coverage',
-    // isFilterable: false,
     isMulti: true,
     label: 'Time coverage',
     // TODO: implement split in buckets
@@ -170,29 +193,12 @@ const facets = [
       includeOutlierEnd: false,
     }),
     step: 10,
-    // [
-    //   {
-    //     to: 1900,
-    //   },
-    //   {
-    //     key: '2001-2010',
-    //     from: 2001,
-    //     to: 2010,
-    //   },
-    //   {
-    //     from: 2011,
-    //   },
-    // ]
-    // min_max_script:
-    //
-    //"def vals = doc['year']; if (vals.length == 0){return 2000} else {def ret = [];for (val in vals){def tmp_val = val.substring(0,4);ret.add(tmp_val.toLowerCase() == tmp_val.toUpperCase() ? Integer.parseInt(tmp_val) : 2000);}return ret;}",
-
+    // isFilterable: false,
     aggs_script:
       "def vals = doc['time_coverage']; if (vals.length == 0){return 2500} else {def ret = [];for (val in vals){def tmp_val = val.substring(0,4);ret.add(tmp_val.toLowerCase() == tmp_val.toUpperCase() ? Integer.parseInt(tmp_val) : 2500);}return ret;}",
   }),
 
   fixedRangeFacet({
-    // wrapper: 'ModalFacetWrapper',
     field: 'readingTime',
     label: 'Reading time',
     rangeType: 'fixed',
@@ -233,7 +239,6 @@ const facets = [
     },
   }),
   multiTermFacet({
-    // wrapper: 'ModalFacetWrapper',
     field: 'language',
     isFilterable: false,
     isMulti: true,
@@ -242,43 +247,7 @@ const facets = [
       values: ['en'],
       type: 'any',
     },
-    factory: 'MultiTermFacet',
-    facetValues: [
-      'ar',
-      'sr',
-      'sq',
-      'bg',
-      'bs',
-      'cs',
-      'hr',
-      'da',
-      'nl',
-      'el',
-      'en',
-      'et',
-      'fi',
-      'fr',
-      'ga',
-      'de',
-      'hu',
-      'is',
-      'it',
-      'lv',
-      'lt',
-      'mk',
-      'mt',
-      'no',
-      'pl',
-      'pt',
-      'ro',
-      'ru',
-      'sh',
-      'sk',
-      'sl',
-      'es',
-      'sv',
-      'tr',
-    ],
+    facetValues: languageCodes,
     sortOn: 'custom',
     sortOnCustomLabel: 'Alphabetical',
   }),
@@ -296,3 +265,37 @@ export default {
 //   type: 'any',
 // },
 // },
+// wrapper: 'ModalFacetWrapper',
+// [
+//   {
+//     to: 1900,
+//   },
+//   {
+//     key: '2001-2010',
+//     from: 2001,
+//     to: 2010,
+//   },
+//   {
+//     from: 2011,
+//   },
+// ]
+// min_max_script:
+//
+//"def vals = doc['year']; if (vals.length == 0){return 2000} else {def ret = [];for (val in vals){def tmp_val = val.substring(0,4);ret.add(tmp_val.toLowerCase() == tmp_val.toUpperCase() ? Integer.parseInt(tmp_val) : 2000);}return ret;}",
+// factory: 'MultiTermFacet',
+// wrapper: 'ModalFacetWrapper',
+// factory: 'sui.Facet',
+// factory: 'MultiTermFacet',
+// wrapper: 'ModalFacetWrapper',
+// wrapper: 'ModalFacetWrapper',
+// factory: 'MultiTermFacet',
+// wrapper: 'ModalFacetWrapper',
+// wrapper: 'ModalFacetWrapper',
+// factory: 'MultiTermFacet',
+// factory: 'MultiTermFacet',
+// wrapper: 'ModalFacetWrapper',
+// factory: 'MultiTermFacet',
+// wrapper: 'ModalFacetWrapper',
+// factory: 'MultiTermFacet',
+// wrapper: 'ModalFacetWrapper',
+// wrapper: 'ModalFacetWrapper',
