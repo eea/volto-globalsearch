@@ -210,7 +210,7 @@ const facets = [
       { from: 25, to: 10000, key: 'Large (25+ minutes)' },
       //        { to: -0.0001, key: 'Unknown' },
     ],
-    factory: 'ModalFixedRangeFacet',
+    // factory: 'ModalFixedRangeFacet',
     default: {
       values: [{ name: 'All', rangeType: 'fixed' }],
       type: 'any',
