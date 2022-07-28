@@ -18,7 +18,7 @@ const globalSearchConfig = {
   layoutComponent: 'TopFilterLayout',
   contentBodyComponent: 'FilterAsideContentView',
   enableNLP: true, // enables NLP capabilities
-  facetsListComponent: 'VerticalCardsModalFacets',
+  facetsListComponent: 'DropdownFacetsList',
   runtime_mappings: build_runtime_mappings(clusters),
   useSearchPhrases: false,
   searchAsYouType: false,
