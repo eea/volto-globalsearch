@@ -2,7 +2,7 @@ import { suiFacet, mergeConfig } from '@eeacms/search';
 import { getGlobalsearchThumbUrl, getGlobalsearchIconUrl } from './../utils';
 import { typesForClustersOptionsFilter } from './clusters';
 
-import { UniversalItem } from '@eeacms/volto-listing-block';
+import { UniversalCard } from '@eeacms/volto-listing-block';
 
 // import WebsiteFilterListComponent from './../components/WebsiteFilterListComponent';
 
@@ -72,8 +72,8 @@ export default function install(config) {
 
   config.resolve.typesForClustersOptionsFilter = typesForClustersOptionsFilter;
 
-  config.resolve.UniversalItem = {
-    component: UniversalItem,
+  config.resolve.UniversalCard = {
+    component: UniversalCard,
   };
 
   // config.resolve.WebsiteFilterListComponent = {
