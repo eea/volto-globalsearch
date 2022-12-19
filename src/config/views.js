@@ -24,7 +24,19 @@ export default {
         item: 'CardItem',
       },
     },
+    {
+      id: 'compactListing',
+      title: 'Compact listing',
+      icon: 'th',
+      render: null,
+      isDefault: false,
+      factories: {
+        view: 'HorizontalCard.Group',
+        item: 'HorizontalCardItem',
+      },
+    },
   ],
+
   cardViewParams: {
     urlField: 'about',
     titleField: 'title',
@@ -46,6 +58,19 @@ export default {
     tagsField: 'topic',
     issuedField: 'issued',
     enabled: true,
+    getThumbnailUrl: 'getGlobalsearchThumbUrl',
+    getIconUrl: 'getGlobalsearchIconUrl',
+    clusterIcons,
+  },
+
+  compactListingViewParams: {
+    urlField: 'about',
+    titleField: 'title',
+    metatypeField: 'objectProvides',
+    descriptionField: 'description',
+    tagsField: 'topic',
+    issuedField: 'issued',
+    enabled: false,
     getThumbnailUrl: 'getGlobalsearchThumbUrl',
     getIconUrl: 'getGlobalsearchIconUrl',
     clusterIcons,
