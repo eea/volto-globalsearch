@@ -219,8 +219,9 @@ const facets = [
   dateRangeFacet({
     field: 'issued.date',
     label: ' ',
-    isFilter: true, // filters don't need facet options to show up
-    showInFacetsList: false,
+    activeFilterLabel: 'Published',
+    isFilter: false, // filters don't need facet options to show up
+    showInFacetsList: true,
     showInSecondaryFacetsList: true,
     // rangeType: 'dateRange',
     isMulti: false,
@@ -234,7 +235,7 @@ const facets = [
     ],
     factory: 'DropdownRangeFilter',
     default: {
-      values: ['All time'],
+      values: ['Last 2 years'],
       type: 'any',
     },
   }),
