@@ -220,8 +220,8 @@ const facets = [
     field: 'issued.date',
     label: ' ',
     activeFilterLabel: 'Published',
-    isFilter: false, // filters don't need facet options to show up
-    showInFacetsList: true,
+    isFilter: true, // filters don't need facet options to show up
+    showInFacetsList: false,
     showInSecondaryFacetsList: true,
     // rangeType: 'dateRange',
     isMulti: false,
