@@ -232,10 +232,11 @@ const facets = [
       { key: 'Last 3 months', from: 'now-3m', to: 'now' },
       { key: 'Last year', from: 'now-1y', to: 'now' },
       { key: 'Last 2 years', from: 'now-2y', to: 'now' },
+      { key: 'Last 5 years', from: 'now-5y', to: 'now' },
     ],
     factory: 'DropdownRangeFilter',
     default: {
-      values: ['Last 2 years'],
+      values: ['Last 5 years'],
       type: 'any',
     },
   }),
