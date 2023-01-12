@@ -225,6 +225,7 @@ const facets = [
     showInSecondaryFacetsList: true,
     // rangeType: 'dateRange',
     isMulti: false,
+    ignoreFromNlp: true,
     ranges: [
       { key: 'All time' },
       { key: 'Last week', from: 'now-1w', to: 'now' },
