@@ -120,6 +120,7 @@ const facets = [
     label: 'Section',
     show: 10000,
     showInFacetsList: false,
+    ignoreNLPWhenActive: true,
   }),
 
   multiTermFacet({
