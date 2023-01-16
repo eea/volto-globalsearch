@@ -76,7 +76,7 @@ export default {
         url: require('../static/website-logo.png'),
       },
       eea: {
-        url: require('../static/eea-logo.png'),
+        url: require('../static/eea-logo.svg'),
       },
       ias: {
         url: require('../static/ias-logo.png'),
