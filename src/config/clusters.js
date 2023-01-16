@@ -133,6 +133,9 @@ export default {
       'etc-wmge': {
         url: require('../static/etc-wmge.png'),
       },
+      sdi: {
+        url: require('../static/eea-logo.svg'),
+      },
     },
     Countries: {
       fallback: {

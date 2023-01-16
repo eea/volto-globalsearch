@@ -53,6 +53,7 @@ const vocab = {
     'etc-icm': 'ETC on Inland, Coastal and Marine Waters',
     'etc-uls': 'ETC on Urban, Land and Soil Systems',
     'etc-wmge': 'ETC on Waste and Materials in Green Economy',
+    sdi: 'Datahub',
   },
 };
 
