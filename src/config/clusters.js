@@ -37,7 +37,7 @@ export const clusters = {
     {
       name: 'Data',
       icon: { name: 'database' },
-      values: ['External data reference', 'Data set'],
+      values: ['Data set'],
       defaultResultView: 'horizontalCard',
     },
     {
@@ -58,6 +58,7 @@ export const clusters = {
         'Information portal',
         'Tool',
         'Case study',
+        'External data reference',
       ], // this will be transformed in "single type clusters".
       defaultResultView: 'horizontalCard',
     },
