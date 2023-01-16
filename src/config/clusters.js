@@ -37,7 +37,7 @@ export const clusters = {
     {
       name: 'Data',
       icon: { name: 'database' },
-      values: ['External data reference', 'Data set'],
+      values: ['Data set'],
       defaultResultView: 'horizontalCard',
     },
     {
@@ -58,6 +58,7 @@ export const clusters = {
         'Information portal',
         'Tool',
         'Case study',
+        'External data reference',
       ], // this will be transformed in "single type clusters".
       defaultResultView: 'horizontalCard',
     },
@@ -76,7 +77,7 @@ export default {
         url: require('../static/website-logo.png'),
       },
       eea: {
-        url: require('../static/eea-logo.png'),
+        url: require('../static/eea-logo.svg'),
       },
       ias: {
         url: require('../static/ias-logo.png'),
@@ -131,6 +132,9 @@ export default {
 
       'etc-wmge': {
         url: require('../static/etc-wmge.png'),
+      },
+      sdi: {
+        url: require('../static/eea-logo.svg'),
       },
     },
     Countries: {

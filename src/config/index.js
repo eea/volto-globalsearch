@@ -1,4 +1,8 @@
-import { suiFacet, mergeConfig } from '@eeacms/search';
+import {
+  suiFacet,
+  mergeConfig,
+  isFilterValueDefaultValue,
+} from '@eeacms/search';
 import { getGlobalsearchThumbUrl, getGlobalsearchIconUrl } from './../utils';
 import { typesForClustersOptionsFilter } from './clusters';
 
@@ -14,6 +18,37 @@ const getClientProxyAddress = () => {
   url.pathname = '';
   url.search = '';
   return url.toString();
+};
+
+const isActivePublishFilter = (f) => {
+  if (f.values?.[0] === 'All time') {
+    return false;
+  }
+
+  return true;
+};
+
+const getActiveFilters = (filters, appConfig) => {
+  const { facets = [] } = appConfig;
+  const filterableFacets = facets.filter(
+    (f) =>
+      f.isFilter ||
+      (typeof f.showInFacetsList !== 'undefined' ? f.showInFacetsList : true),
+  );
+  const facetNames = filterableFacets.map((f) => f.field);
+  const filterNames = filters
+    .filter((f) => facetNames.includes(f.field))
+    .map((f) => f.field);
+
+  const activeFilters = filters
+    .filter((f) => filterNames.includes(f.field))
+    .filter((f) =>
+      f.field === 'issued.date'
+        ? isActivePublishFilter(f)
+        : !isFilterValueDefaultValue(f, appConfig),
+    );
+
+  return activeFilters;
 };
 
 export default function install(config) {
@@ -75,6 +110,10 @@ export default function install(config) {
   config.resolve.UniversalCard = {
     component: UniversalCard,
   };
+
+  config.resolve.getGlobalSearchActiveFilters = getActiveFilters;
+  config.searchui.globalsearch.getActiveFilters =
+    'getGlobalSearchActiveFilters';
 
   // config.resolve.WebsiteFilterListComponent = {
   //   component: WebsiteFilterListComponent,

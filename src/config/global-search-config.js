@@ -22,6 +22,7 @@ const globalSearchConfig = {
   runtime_mappings: build_runtime_mappings(clusters),
   useSearchPhrases: false,
   searchAsYouType: false,
+  landingPageURL: '/en/advanced-search',
 
   ...vocabs,
   ...facets,
