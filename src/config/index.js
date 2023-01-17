@@ -112,8 +112,6 @@ export default function install(config) {
   };
 
   config.resolve.getGlobalSearchActiveFilters = getActiveFilters;
-  config.searchui.globalsearch.getActiveFilters =
-    'getGlobalSearchActiveFilters';
 
   // config.resolve.WebsiteFilterListComponent = {
   //   component: WebsiteFilterListComponent,
