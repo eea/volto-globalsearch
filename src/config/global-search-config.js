@@ -23,6 +23,7 @@ const globalSearchConfig = {
   useSearchPhrases: false,
   searchAsYouType: false,
   landingPageURL: '/en/advanced-search',
+  getActiveFilters: 'getGlobalSearchActiveFilters',
 
   ...vocabs,
   ...facets,
