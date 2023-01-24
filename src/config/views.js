@@ -129,7 +129,7 @@ export default {
             'Spain',
             'Sweden',
             'Switzerland',
-            'Turkey',
+            'Türkiye',
             'Albania',
             'Bosnia and Herzegovina',
             'Kosovo',
