@@ -96,6 +96,7 @@ export default {
           facetField: 'spatial',
           filterType: 'any:exact',
           sortOn: 'alpha',
+          maxPerSection: 100,
           whitelist: [
             'Austria',
             'Belgium',
@@ -128,7 +129,7 @@ export default {
             'Spain',
             'Sweden',
             'Switzerland',
-            'Turkey',
+            'Türkiye',
             'Albania',
             'Bosnia and Herzegovina',
             'Kosovo',
