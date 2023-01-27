@@ -79,7 +79,7 @@ export default {
   initialView: {
     factory: 'TilesLandingPage',
     tilesLandingPageParams: {
-      maxPerSection: 30,
+      maxPerSection: 100,
       // clusterIcons,
       sortField: 'issued.date',
       sortDirection: 'desc',
