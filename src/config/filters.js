@@ -7,7 +7,22 @@ export default {
     () => ({
       constant_score: {
         filter: {
-          range: { 'issued.date': { lte: getTodayWithTime() } },
+          bool: {
+            should: [
+              {
+                bool: {
+                  must_not: {
+                    exists: {
+                      field: 'issued',
+                    },
+                  },
+                },
+              },
+              {
+                range: { 'issued.date': { lte: getTodayWithTime() } },
+              },
+            ],
+          },
         },
       },
     }),
