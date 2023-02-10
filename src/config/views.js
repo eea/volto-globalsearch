@@ -201,7 +201,7 @@ export default {
         },
         {
           id: 'website',
-          title: 'Sources',
+          title: 'Websitess',
           facetField: 'cluster_name',
           sortOn: 'count',
           sortOrder: 'desc',
