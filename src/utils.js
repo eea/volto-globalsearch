@@ -5,7 +5,7 @@
 //   });
 //   return icons;
 // };
-//
+
 export const build_runtime_mappings = (settings) => {
   const clusters = settings.clusters
     .map((cluster) => {
@@ -62,6 +62,7 @@ export function getTodayWithTime() {
   ].join('');
   return output;
 }
+
 export const getGlobalsearchIconUrl = (contentTypeNormalize) => (
   result,
   config,

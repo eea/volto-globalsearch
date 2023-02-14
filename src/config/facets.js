@@ -111,7 +111,7 @@ const facets = [
     iconsFamily: 'Countries',
     enableExact: true,
     sortOn: 'value',
-    alwaysVisible: true,
+    alwaysVisible: false,
   }),
   multiTermFacet({
     field: 'op_cluster',
@@ -122,15 +122,24 @@ const facets = [
     showInFacetsList: false,
     ignoreNLPWhenActive: true,
   }),
+  multiTermFacet({
+    field: 'cluster_name',
+    isFilterable: false,
+    isMulti: true,
+    label: 'Websites',
+    iconsFamily: 'Sources',
+    alwaysVisible: true,
+  }),
 
   multiTermFacet({
     field: 'places',
     isFilterable: true,
     isMulti: true,
-    label: 'Regions/Places/Cities/Seas...',
+    label: 'Regions/Places',
     blacklist: placesBlacklist,
     show: 10000,
     showAllOptions: true, // show all options (even if 0) in modal facet
+    alwaysVisible: true,
   }),
   multiTermFacet({
     field: 'objectProvides',
@@ -140,13 +149,6 @@ const facets = [
     iconsFamily: 'Content types',
     //whitelist: objectProvidesWhitelist,
     optionsFilter: 'typesForClustersOptionsFilter',
-  }),
-  multiTermFacet({
-    field: 'cluster_name',
-    isFilterable: false,
-    isMulti: true,
-    label: 'Sources',
-    iconsFamily: 'Sources',
   }),
   histogramFacet({
     field: 'year',
