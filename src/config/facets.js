@@ -102,6 +102,15 @@ const facets = [
     alwaysVisible: true,
   }),
   multiTermFacet({
+    field: 'subject.keyword',
+    isFilterable: true,
+    isMulti: true,
+    label: 'Keywords',
+    show: 10000,
+    showAllOptions: true, // show all options (even if 0) in modal facet
+    alwaysVisible: false,
+  }),
+  multiTermFacet({
     field: 'spatial',
     isFilterable: true,
     isMulti: true,
