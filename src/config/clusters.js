@@ -59,6 +59,7 @@ export const clusters = {
         'Tool',
         'Case study',
         'External data reference',
+        'Publication reference',
       ], // this will be transformed in "single type clusters".
       defaultResultView: 'horizontalCard',
     },

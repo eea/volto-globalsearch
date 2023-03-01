@@ -13,6 +13,8 @@ import { UniversalCard } from '@eeacms/volto-listing-block';
 import contentTypeNormalize from './json/contentTypeNormalize.json';
 import globalSearchConfig from './global-search-config.js';
 
+import globalSearchBaseConfig from './global-search-base-config.js';
+
 const getClientProxyAddress = () => {
   const url = new URL(window.location);
   url.pathname = '';
@@ -67,6 +69,11 @@ export default function install(config) {
     host: process.env.RAZZLE_ES_PROXY_ADDR || 'http://localhost:3000',
   };
 
+  config.searchui.globalsearchbase = {
+    ...mergeConfig(globalSearchBaseConfig, config.searchui.default),
+    elastic_index: 'es',
+    host: process.env.RAZZLE_ES_PROXY_ADDR || 'http://localhost:3000',
+  };
   if (typeof window !== 'undefined') {
     config.searchui.globalsearch.host =
       process.env.RAZZLE_ES_PROXY_ADDR || getClientProxyAddress();
