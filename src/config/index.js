@@ -77,6 +77,9 @@ export default function install(config) {
   if (typeof window !== 'undefined') {
     config.searchui.globalsearch.host =
       process.env.RAZZLE_ES_PROXY_ADDR || getClientProxyAddress();
+
+    config.searchui.globalsearchbase.host =
+      process.env.RAZZLE_ES_PROXY_ADDR || getClientProxyAddress();
   }
 
   config.searchui.standalone = {
