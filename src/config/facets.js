@@ -48,6 +48,9 @@ const languageCodes = [
   'tr',
 ];
 
+const today = new Date();
+const currentYear = today.getFullYear();
+
 const facets = [
   booleanFacet(() => ({
     field: 'IncludeArchived',
@@ -167,7 +170,7 @@ const facets = [
     // TODO: implement split in buckets
     ranges: makeRange({
       step: 1,
-      normalRange: [1994, 2022],
+      normalRange: [1994, currentYear],
       includeOutlierStart: false,
       includeOutlierEnd: false,
     }),
