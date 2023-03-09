@@ -167,7 +167,8 @@ export const getGlobalsearchThumbUrl = (contentTypeNormalize) => (
     result.about?.raw?.indexOf('://biodiversity.europa.eu') !== -1 ||
     result.about?.raw?.indexOf('://forest.eea.europa.eu') !== -1 ||
     result.about?.raw?.indexOf('://climate-energy.eea.europa.eu') !== -1 ||
-    result.about?.raw?.indexOf('://industry.eea.europa.eu') !== -1
+    result.about?.raw?.indexOf('://industry.eea.europa.eu') !== -1 ||
+    result.about?.raw?.indexOf('://www.eea.europa.eu/en/') !== -1
   ) {
     if (result.image_preview) {
       image = result.image_preview.raw;
@@ -175,8 +176,9 @@ export const getGlobalsearchThumbUrl = (contentTypeNormalize) => (
     }
   }
   if (
-    result.about?.raw?.startsWith('http://www.eea.europa.eu') ||
-    result.about?.raw?.startsWith('https://www.eea.europa.eu')
+    (result.about?.raw?.startsWith('http://www.eea.europa.eu') ||
+      result.about?.raw?.startsWith('https://www.eea.europa.eu')) &&
+    result.about?.raw?.indexOf('://www.eea.europa.eu/en/') === -1
   ) {
     image = result.about.raw + '/image_preview';
     has_img = true;
