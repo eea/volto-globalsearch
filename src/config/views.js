@@ -83,6 +83,18 @@ export default {
       // clusterIcons,
       sortField: 'issued.date',
       sortDirection: 'desc',
+      default_filters: [
+        {
+          field: 'language',
+          values: ['en'],
+        },
+      ],
+      //TODO: This is a temporary solution, until we find another way to detect if there was any interaction on the landing page
+      filterForAllResults: {
+        field: 'items_count_language',
+        value: 1,
+      },
+
       sections: [
         {
           id: 'topics',
