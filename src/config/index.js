@@ -4,6 +4,8 @@ import {
   isFilterValueDefaultValue,
 } from '@eeacms/search';
 import { getGlobalsearchThumbUrl, getGlobalsearchIconUrl } from './../utils';
+import healthcheck from './healthcheck';
+
 import { typesForClustersOptionsFilter } from './clusters';
 
 import { UniversalCard } from '@eeacms/volto-listing-block';
@@ -107,6 +109,8 @@ export default function install(config) {
       sections: [],
     },
   };
+
+  config.resolve.getGlobalSearchHealthcheck = healthcheck;
 
   config.resolve.getGlobalsearchIconUrl = getGlobalsearchIconUrl(
     contentTypeNormalize,

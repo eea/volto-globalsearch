@@ -7,7 +7,6 @@ import query from './query';
 import filters from './filters';
 import download from './download';
 import vocabs from './vocabulary';
-import healthcheck from './healthcheck';
 
 import objectProvidesWhitelist from './json/objectProvidesWhitelist.json';
 import spatialWhitelist from './json/spatialWhitelist.json';
@@ -24,7 +23,7 @@ const globalSearchBaseConfig = {
   useSearchPhrases: false,
   searchAsYouType: false,
   landingPageURL: null,
-  healthcheck,
+  healthcheck: 'getGlobalSearchHealthcheck',
   getActiveFilters: 'getGlobalSearchActiveFilters',
 
   ...vocabs,
