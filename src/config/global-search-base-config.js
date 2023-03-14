@@ -22,7 +22,8 @@ const globalSearchBaseConfig = {
   runtime_mappings: build_runtime_mappings(clusters),
   useSearchPhrases: false,
   searchAsYouType: false,
-  landingPageURL: '/en/advanced-search',
+  landingPageURL: null,
+  healthcheck: 'getGlobalSearchHealthcheck',
   getActiveFilters: 'getGlobalSearchActiveFilters',
 
   ...vocabs,
