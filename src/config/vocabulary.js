@@ -54,6 +54,7 @@ const vocab = {
     'etc-uls': 'ETC on Urban, Land and Soil Systems',
     'etc-wmge': 'ETC on Waste and Materials in Green Economy',
     sdi: 'Datahub',
+    cab: 'Climate Advisory Board',
   },
 };
 

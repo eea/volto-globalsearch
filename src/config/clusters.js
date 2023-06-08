@@ -137,6 +137,9 @@ export default {
       sdi: {
         url: require('../static/eea-logo.svg'),
       },
+      cab: {
+        url: require('../static/cab-logo.png'),
+      },
     },
     Countries: {
       fallback: {
