@@ -255,6 +255,10 @@ const facets = [
       values: ['Last 5 years'],
       type: 'any',
     },
+    missing: {
+      values: ['All time'],
+      type: 'any',
+    },
   }),
   multiTermFacet({
     field: 'language',
