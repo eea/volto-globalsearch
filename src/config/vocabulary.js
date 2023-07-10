@@ -55,6 +55,8 @@ const vocab = {
     'etc-wmge': 'ETC on Waste and Materials in Green Economy',
     sdi: 'Datahub',
     cab: 'Climate Advisory Board',
+    discomap: 'DiscoMap',
+    noise: 'NOISE Observation & Information Service for Europe',
   },
 };
 

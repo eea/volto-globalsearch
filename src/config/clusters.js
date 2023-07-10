@@ -140,6 +140,12 @@ export default {
       cab: {
         url: require('../static/cab-logo.png'),
       },
+      discomap: {
+        url: require('../static/eea-logo.svg'),
+      },
+      noise: {
+        url: require('../static/eea-logo.svg'),
+      },
     },
     Countries: {
       fallback: {

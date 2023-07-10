@@ -234,6 +234,7 @@ const facets = [
   dateRangeFacet({
     field: 'issued.date',
     label: ' ',
+    allow_missing: false,
     activeFilterLabel: 'Published',
     isFilter: true, // filters don't need facet options to show up
     showInFacetsList: false,
@@ -253,6 +254,10 @@ const facets = [
     factory: 'DropdownRangeFilter',
     default: {
       values: ['Last 5 years'],
+      type: 'any',
+    },
+    missing: {
+      values: ['All time'],
       type: 'any',
     },
   }),
