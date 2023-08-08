@@ -20,6 +20,7 @@ module.exports = {
     'load-volto-addons':
       '<rootDir>/node_modules/@plone/volto/jest-addons-loader.js',
   },
+  transformIgnorePatterns: ['node_modules/(?!@eeacms)/volto-listing-block'],
   transform: {
     '^.+\\.js(x)?$': 'babel-jest',
     '^.+\\.(png)$': 'jest-file',
