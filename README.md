@@ -23,9 +23,22 @@ EEA Elastic Search Block with NLP integration [Volto](https://github.com/plone/v
 
 ## Getting started
 
+### Try volto-globalsearch with Docker
+
+      git clone https://github.com/eea/volto-globalsearch.git
+      cd volto-globalsearch
+      make
+      make start
+
+Go to http://localhost:3000
+
 ### Add volto-globalsearch to your Volto project
 
 1. Make sure you have a [Plone backend](https://plone.org/download) up-and-running at http://localhost:8080/Plone
+
+   ```Bash
+   docker compose up backend
+   ```
 
 1. Start Volto frontend
 
