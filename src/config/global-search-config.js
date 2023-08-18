@@ -15,7 +15,8 @@ const index = globalSearchConfig.permanentFilters.findIndex(
 );
 const baseConstantScore = globalSearchConfig.permanentFilters[index];
 
-globalSearchConfig.permanentFilters[index] = () => {
+function updatedConstantScore() {
+  debugger;
   const base = baseConstantScore();
   base.constant_score.filter.bool.must_not = {
     exists: {
@@ -23,6 +24,10 @@ globalSearchConfig.permanentFilters[index] = () => {
     },
   };
   return base;
-};
+}
+
+updatedConstantScore.id = 'constantScore';
+
+globalSearchConfig.permanentFilters[index] = updatedConstantScore
 
 export default globalSearchConfig;
