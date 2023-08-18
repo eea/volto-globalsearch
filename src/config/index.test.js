@@ -181,11 +181,11 @@ describe('getGlobalsearchConfig', () => {
     const index = globalSearchConfig.permanentFilters.findIndex(
       (f) => f.id === 'constantScore',
     );
-    const constantScore = globalSearchConfig.permanentFilters[index]()
+    const constantScore = globalSearchConfig.permanentFilters[index]();
     expect(constantScore.constant_score.filter.bool['must_not']).toEqual({
       exists: {
         field: 'exclude_from_globalsearch',
       },
-    })
+    });
   });
 });
