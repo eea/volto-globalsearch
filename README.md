@@ -14,8 +14,11 @@
 [![Bugs](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-globalsearch-develop&metric=bugs)](https://sonarqube.eea.europa.eu/dashboard?id=volto-globalsearch-develop)
 [![Duplicated Lines (%)](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-globalsearch-develop&metric=duplicated_lines_density)](https://sonarqube.eea.europa.eu/dashboard?id=volto-globalsearch-develop)
 
-
 EEA Elastic Search Block with NLP integration [Volto](https://github.com/plone/volto) add-on
+
+## Features
+
+![Globalsearch](./docs/volto-globalsearch.gif)
 
 ## Demo
 
@@ -42,25 +45,25 @@ Go to http://localhost:3000
 
 1. Start Volto frontend
 
-* If you already have a volto project, just update `package.json`:
+- If you already have a volto project, just update `package.json`:
 
-   ```JSON
-   "addons": [
-       "@eeacms/volto-globalsearch"
-   ],
+  ```JSON
+  "addons": [
+      "@eeacms/volto-globalsearch"
+  ],
 
-   "dependencies": {
-       "@eeacms/volto-globalsearch": "*"
-   }
-   ```
+  "dependencies": {
+      "@eeacms/volto-globalsearch": "*"
+  }
+  ```
 
-* If not, create one:
+- If not, create one:
 
-   ```
-   npm install -g yo @plone/generator-volto
-   yo @plone/volto my-volto-project --addon @eeacms/volto-globalsearch
-   cd my-volto-project
-   ```
+  ```
+  npm install -g yo @plone/generator-volto
+  yo @plone/volto my-volto-project --addon @eeacms/volto-globalsearch
+  cd my-volto-project
+  ```
 
 1. Install new add-ons and restart Volto:
 
