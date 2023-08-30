@@ -18,7 +18,7 @@ EEA Elastic Search Block with NLP integration [Volto](https://github.com/plone/v
 
 ## Features
 
-![Globalsearch](./docs/volto-globalsearch.gif)
+![Globalsearch](https://raw.githubusercontent.com/eea/volto-globalsearch/master/docs/volto-globalsearch.gif)
 
 ## Demo
 
