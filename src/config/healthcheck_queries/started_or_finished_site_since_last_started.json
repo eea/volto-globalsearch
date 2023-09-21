@@ -1,0 +1,40 @@
+{
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "terms": {
+              "cluster.keyword": [
+                "<site_name>"
+              ]
+            }
+          },
+          {
+            "terms": {
+              "status.keyword": [
+                "Started",
+                "Finished"
+              ]
+            }
+          },
+          {
+            "range": {
+              "start_time_ts": {
+                "gt": "<last_started>"
+              }
+            }
+          }
+        ],
+        "must_not": [],
+        "should": []
+      }
+    },
+    "from": 0,
+    "size": 1,
+    "sort": [
+      {
+        "start_time_ts": "desc"
+      }
+    ],
+    "index": "<index_name>"
+  }
