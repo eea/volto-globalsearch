@@ -1,29 +1,29 @@
 {
-    "query": {
-      "bool": {
-        "must": [
-          {
-            "match": {
-              "task_name.keyword": "scheduled"
-            }
-          },
-          {
-            "match": {
-              "status.keyword": "Started" 
-            }
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match": {
+            "task_name.keyword": "scheduled"
           }
-        ],
-        "must_not": [],
-        "should": []
-      }
-    },
-    "from": 0,
-    "size": 1,
-    "sort": [
-      {
-        "start_time_ts": "desc"
-      }
-    ],
-    "aggs": {},
-    "index": "<index_name>"
+        },
+        {
+          "match": {
+            "status.keyword": "Started"
+          }
+        }
+      ],
+      "must_not": [],
+      "should": []
+    }
+  },
+  "from": 0,
+  "size": 1,
+  "sort": [
+    {
+      "start_time_ts": "desc"
+    }
+  ],
+  "aggs": {},
+  "index": "<index_name>"
 }

@@ -4,16 +4,12 @@
       "must": [
         {
           "terms": {
-            "cluster.keyword": [
-              "<site_name>"
-            ]
+            "cluster.keyword": ["<site_name>"]
           }
         },
         {
           "terms": {
-            "status.keyword": [
-              "Failed"
-            ]
+            "status.keyword": ["Failed"]
           }
         },
         {

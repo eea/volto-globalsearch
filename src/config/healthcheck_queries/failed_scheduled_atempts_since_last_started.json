@@ -1,36 +1,36 @@
 {
-    "query": {
-      "bool": {
-        "must": [
-          {
-            "match": {
-              "task_name.keyword": "scheduled"
-            }
-          },
-          {
-            "match": {
-              "status.keyword": "Failed"
-            }
-          },
-          {
-            "range": {
-              "start_time_ts": {
-                "gt": "<last_started>"
-              }
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match": {
+            "task_name.keyword": "scheduled"
+          }
+        },
+        {
+          "match": {
+            "status.keyword": "Failed"
+          }
+        },
+        {
+          "range": {
+            "start_time_ts": {
+              "gt": "<last_started>"
             }
           }
-        ],
-        "must_not": [],
-        "should": []
-      }
-    },
-    "from": 0,
-    "size": 10,
-    "sort": [
-      {
-        "start_time_ts": "desc"
-      }
-    ],
-    "aggs": {},
-    "index": "<index_name>"
+        }
+      ],
+      "must_not": [],
+      "should": []
+    }
+  },
+  "from": 0,
+  "size": 10,
+  "sort": [
+    {
+      "start_time_ts": "desc"
+    }
+  ],
+  "aggs": {},
+  "index": "<index_name>"
 }

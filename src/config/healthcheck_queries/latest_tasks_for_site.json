@@ -1,25 +1,23 @@
 {
-    "query": {
-      "bool": {
-        "must": [
-          {
-            "terms": {
-              "cluster.keyword": [
-                "<site_name>"
-              ]
-            }
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "terms": {
+            "cluster.keyword": ["<site_name>"]
           }
-        ],
-        "must_not": [],
-        "should": []
-      }
-    },
-    "from": 0,
-    "size": "<THRESHOLD_WARNING>",
-    "sort": [
-      {
-        "start_time_ts": "desc"
-      }
-    ],
-    "index": "<index_name>"
+        }
+      ],
+      "must_not": [],
+      "should": []
+    }
+  },
+  "from": 0,
+  "size": "<THRESHOLD_WARNING>",
+  "sort": [
+    {
+      "start_time_ts": "desc"
+    }
+  ],
+  "index": "<index_name>"
 }
