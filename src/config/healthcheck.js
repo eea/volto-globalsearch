@@ -27,7 +27,7 @@ async function executeQuery(q, appConfig, params = {}) {
   return new Promise(async (resolve, reject) => {
     params['index_name'] = 'status_' + appConfig['index_name'];
     const query = buildQuery(q, params);
-    // console.log(JSON.stringify(query));
+    console.log(JSON.stringify(query));
     const resp = await runRequest(query, appConfig);
     // console.log(JSON.stringify(resp.body));
     resolve(resp.body);
@@ -44,7 +44,7 @@ export async function getlastandnext_started_execution(appConfig) {
   });
 }
 
-async function getlastfailed_execution(appConfig, params) {
+export async function getlastfailed_execution(appConfig, params) {
   return new Promise(async (resolve, reject) => {
     const body = await executeQuery(
       failed_scheduled_atempts_since_last_started,
@@ -62,7 +62,7 @@ async function getlastfailed_execution(appConfig, params) {
   });
 }
 
-async function getlastsynctaskssincestarted(appConfig, params) {
+export async function getlastsynctaskssincestarted(appConfig, params) {
   return new Promise(async (resolve, reject) => {
     const body = await executeQuery(
       last_sync_task_since_last_start,
@@ -79,7 +79,7 @@ async function getlastsynctaskssincestarted(appConfig, params) {
   });
 }
 
-async function getlastsuccessfultasks_for_site(appConfig, params) {
+export async function getlastsuccessfultasks_for_site(appConfig, params) {
   return new Promise(async (resolve, reject) => {
     const body = await executeQuery(
       started_or_finished_site_since_last_started,
@@ -94,7 +94,7 @@ async function getlastsuccessfultasks_for_site(appConfig, params) {
   });
 }
 
-async function getlatesttasks_for_site(appConfig, params) {
+export async function getlatesttasks_for_site(appConfig, params) {
   return new Promise(async (resolve, reject) => {
     const body = await executeQuery(latest_tasks_for_site, appConfig, params);
     if (body.hits.total.value > 0) {

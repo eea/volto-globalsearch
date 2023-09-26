@@ -1,4 +1,4 @@
-import { getlastandnext_started_execution } from '../healthcheck';
+import { getlastsuccessfultasks_for_site } from '../healthcheck';
 //import last_scheduled_started_indexing_RESP from './last_scheduled_started_indexing_RESP.json';
 
 const SLOTS = [
@@ -15,7 +15,7 @@ jest.mock('@eeacms/search', () => ({
 jest.mock('@eeacms/search/lib/runRequest', () => ({
   runRequest: jest.fn().mockResolvedValue({
     body: {
-      took: 963,
+      took: 18,
       timed_out: false,
       _shards: {
         total: 1,
@@ -25,32 +25,27 @@ jest.mock('@eeacms/search/lib/runRequest', () => ({
       },
       hits: {
         total: {
-          value: 624,
+          value: 271,
           relation: 'eq',
         },
         max_score: null,
         hits: [
           {
             _index: 'status_test_index',
-            _id: 'main_task_2023_09_26_12_50_13',
+            _id: 'test_site_2023_09_26_13_02_28',
             _score: null,
             _source: {
               '@version': '1',
-              cluster: 'main_task',
-              start_time_ts: 1695732613000,
-              docs_cnt: 92190,
-              sites: ['test_site'],
-              next_execution_date: '2023_09_26_12_55_00',
-              next_execution_date_ts: 1695732900000,
-              start_time: '2023_09_26_12_50_13',
-              task_name: 'scheduled',
+              '@timestamp': '2023-09-26T13:04:34.337Z',
+              cluster: 'test_site',
+              start_time_ts: 1695733348000,
               msg: '',
               index_name: 'status_test_index',
-              id: 'main_task_2023_09_26_12_50_13',
-              status: 'Started',
-              '@timestamp': '2023-09-26T12:50:13.450Z',
+              id: 'test_site_2023_09_26_13_02_28',
+              start_time: '2023_09_26_13_02_28',
+              status: 'Finished',
             },
-            sort: [1695732613000],
+            sort: [1695733348000],
           },
         ],
       },
@@ -59,13 +54,10 @@ jest.mock('@eeacms/search/lib/runRequest', () => ({
 }));
 
 describe('test_healthcheck', () => {
-  it('should return last_started and next_execution_date', async () => {
+  it('should return true', async () => {
     const appConfig = { index_name: 'test_index' };
 
-    const resp = await getlastandnext_started_execution(appConfig, {});
-    expect(resp).toEqual({
-      last_started: 1695732613000,
-      next_execution_date: 1695732900000,
-    });
+    const resp = await getlastsuccessfultasks_for_site(appConfig, {});
+    expect(resp).toEqual(true);
   });
 });

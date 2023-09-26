@@ -1,0 +1,90 @@
+import { getlastsynctaskssincestarted } from '../healthcheck';
+//import last_scheduled_started_indexing_RESP from './last_scheduled_started_indexing_RESP.json';
+
+const SLOTS = [
+  'aboveSearchInput',
+  'belowSearchInput',
+  'aboveResults',
+  'belowResults',
+];
+
+jest.mock('@eeacms/search', () => ({
+  SLOTS: SLOTS,
+}));
+
+jest.mock('@eeacms/search/lib/runRequest', () => ({
+  runRequest: jest.fn().mockResolvedValue({
+    body: {
+      took: 28,
+      timed_out: false,
+      _shards: {
+        total: 1,
+        successful: 1,
+        skipped: 0,
+        failed: 0,
+      },
+      hits: {
+        total: {
+          value: 288,
+          relation: 'eq',
+        },
+        max_score: null,
+        hits: [
+          {
+            _index: 'status_test_index',
+            _id: 'main_task_2023_09_26_13_01_12',
+            _score: null,
+            _source: {
+              '@version': '1',
+              cluster: 'main_task',
+              start_time_ts: 1695733272000,
+              docs_cnt: 242,
+              sites: ['test_site1', 'test_site2'],
+              next_execution_date: '2023_09_26_14_00_00',
+              next_execution_date_ts: 1695736800000,
+              start_time: '2023_09_26_13_01_12',
+              task_name: '',
+              msg: '',
+              index_name: 'status_test_index',
+              id: 'main_task_2023_09_26_13_01_12',
+              status: 'Started',
+              '@timestamp': '2023-09-26T13:01:12.601Z',
+            },
+            sort: [1695733272000],
+          },
+          {
+            _index: 'status_test_index',
+            _id: 'main_task_2023_09_26_12_00_24',
+            _score: null,
+            _source: {
+              '@version': '1',
+              cluster: 'main_task',
+              start_time_ts: 1695729624000,
+              docs_cnt: 242,
+              sites: ['test_site1', 'test_site2'],
+              next_execution_date: '2023_09_26_13_00_00',
+              next_execution_date_ts: 1695733200000,
+              start_time: '2023_09_26_12_00_24',
+              task_name: '',
+              msg: '',
+              index_name: 'status_test_index',
+              id: 'main_task_2023_09_26_12_00_24',
+              status: 'Started',
+              '@timestamp': '2023-09-26T12:00:24.187Z',
+            },
+            sort: [1695729624000],
+          },
+        ],
+      },
+    },
+  }),
+}));
+
+describe('test_healthcheck', () => {
+  it('should return list of clusters', async () => {
+    const appConfig = { index_name: 'test_index' };
+
+    const resp = await getlastsynctaskssincestarted(appConfig, {});
+    expect(resp).toEqual({ sites: ['test_site1', 'test_site2'] });
+  });
+});
