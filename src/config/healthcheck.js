@@ -1,10 +1,10 @@
 import runRequest from '@eeacms/search/lib/runRequest';
 import buildRequest from '@eeacms/search/lib/search/query';
-import getInfo from '@eeacms/search/lib/getIndexInfo';
+//import getInfo from '@eeacms/search/lib/getIndexInfo';
 
 import failed_scheduled_atempts_since_last_started from './healthcheck_queries/failed_scheduled_atempts_since_last_started.json';
-import failed_site_since_last_started from './healthcheck_queries/failed_site_since_last_started.json';
-import last_scheduled_indexing from './healthcheck_queries/last_scheduled_indexing.json';
+//import failed_site_since_last_started from './healthcheck_queries/failed_site_since_last_started.json';
+//import last_scheduled_indexing from './healthcheck_queries/last_scheduled_indexing.json';
 import last_scheduled_started_indexing from './healthcheck_queries/last_scheduled_started_indexing.json';
 import last_sync_task_since_last_start from './healthcheck_queries/last_sync_task_since_last_start.json';
 import latest_tasks_for_site from './healthcheck_queries/latest_tasks_for_site.json';
