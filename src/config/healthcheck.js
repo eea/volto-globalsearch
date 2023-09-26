@@ -16,7 +16,7 @@ const default_queryTimeSecondsThreshold_WARNING = 5;
 const default_failedSyncThreshold_WARNING = 5;
 const default_failedSyncThreshold_OK = 2;
 
-function buildQuery(query, values) {
+export function buildQuery(query, values) {
   let q = JSON.stringify(query);
   Object.keys(values).forEach(function (key, value) {
     q = q.split('<' + key + '>').join(values[key]);
