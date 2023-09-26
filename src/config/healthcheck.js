@@ -1,5 +1,4 @@
-import runRequest from '@eeacms/search/lib/runRequest';
-import buildRequest from '@eeacms/search/lib/search/query';
+import { runRequest, buildRequest } from '@eeacms/search';
 //import getInfo from '@eeacms/search/lib/getIndexInfo';
 
 import failed_scheduled_atempts_since_last_started from './healthcheck_queries/failed_scheduled_atempts_since_last_started.json';
@@ -35,7 +34,7 @@ async function executeQuery(q, appConfig, params = {}) {
   });
 }
 
-async function getlastandnext_started_execution(appConfig) {
+export async function getlastandnext_started_execution(appConfig) {
   return new Promise(async (resolve, reject) => {
     const body = await executeQuery(last_scheduled_started_indexing, appConfig);
     resolve({
