@@ -5,7 +5,10 @@ import {
   getlastsynctaskssincestarted,
   getlatesttasks_for_site,
   getlastsuccessfultasks_for_site,
+  getStatus,
 } from './healthcheck';
+import { runRequest } from '@eeacms/search';
+
 import failed_scheduled_atempts_since_last_started_resp from './healthcheck_queries/failed_scheduled_atempts_since_last_started_resp.json';
 import last_scheduled_started_indexing_resp from './healthcheck_queries/last_scheduled_started_indexing_resp.json';
 import last_sync_task_since_last_start_resp from './healthcheck_queries/last_sync_task_since_last_start_resp.json';
@@ -20,6 +23,7 @@ const SLOTS = [
 ];
 jest.mock('@eeacms/search', () => ({
   SLOTS: SLOTS,
+  runRequest: jest.fn(),
 }));
 
 const query1 = {
@@ -221,5 +225,32 @@ describe('test parsing the response from elasticsearch for empty response', () =
   it("if the can't take the status for the last task for a site, return false", async () => {
     const resp = getlastsuccessfultasks_for_site(empty_resp);
     expect(resp).toEqual(false);
+  });
+});
+
+describe('test the status of the index', () => {
+  it('test', async () => {
+    runRequest
+      .mockReturnValueOnce(
+        Promise.resolve({ body: last_scheduled_started_indexing_resp }),
+      )
+      .mockReturnValueOnce(
+        Promise.resolve({
+          body: failed_scheduled_atempts_since_last_started_resp,
+        }),
+      )
+      .mockReturnValueOnce(
+        Promise.resolve({
+          body: last_sync_task_since_last_start_resp,
+        }),
+      )
+      .mockReturnValueOnce(
+        Promise.resolve({
+          body: started_or_finished_site_since_last_started_resp,
+        }),
+      );
+    const params = { index_name: 'test_index', now: 1695732000000 };
+    const status = await getStatus({}, params);
+    expect(status).toEqual({ status: 'OK' });
   });
 });

@@ -104,7 +104,7 @@ export function getlatesttasks_for_site(body, params = {}) {
   }
 }
 
-async function getStatus(appConfig, params) {
+export async function getStatus(appConfig, params) {
   return new Promise(async (resolve, reject) => {
     let resp = 'OK';
     let error = null;
@@ -122,7 +122,7 @@ async function getStatus(appConfig, params) {
     // const last_successful_schedule = step1.last_started;
     let next_schedule = step1.next_execution_date;
 
-    const now = Date.now() - 60 * 1000;
+    const now = params.now || Date.now() - 60 * 1000;
     if (now >= next_schedule) {
       try {
         // console.log('=======================================');
