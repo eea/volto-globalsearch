@@ -295,6 +295,6 @@ describe('test the healthcheck', () => {
       );
     const params = { index_name: 'test_index', now: 1695732000000 };
     const status = await healthcheck({}, params);
-    expect(status).toEqual({ status: '1K' });
+    expect(status).toEqual({ status: 'OK' });
   });
 });
