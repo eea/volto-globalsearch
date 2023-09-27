@@ -229,7 +229,7 @@ export async function getStatus(appConfig, params) {
     resolve(status);
   });
 }
-export default async function healthcheck(appConfig, query) {
+export default async function healthcheck(appConfig, params) {
   // is index ok?
   // return index update date
   // run default query, see number of results
@@ -244,7 +244,8 @@ export default async function healthcheck(appConfig, query) {
         queryTimeSecondsThreshold_WARNING,
         failedSyncThreshold_OK,
         failedSyncThreshold_WARNING,
-      } = query;
+        now,
+      } = params;
       documentCountThreshold =
         documentCountThreshold || default_documentCountThreshold;
       queryTimeSecondsThreshold_OK =
@@ -260,6 +261,7 @@ export default async function healthcheck(appConfig, query) {
       const airflow_params = {
         FAILED_SYNC_THRESHOLD_WARNING: failedSyncThreshold_WARNING,
         FAILED_SYNC_THRESHOLD_OK: failedSyncThreshold_OK,
+        now: now,
       };
 
       ///////////////////

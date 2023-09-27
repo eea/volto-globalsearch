@@ -7,6 +7,8 @@ import {
   getlastsuccessfultasks_for_site,
   getStatus,
 } from './healthcheck';
+import healthcheck from './healthcheck';
+
 import { runRequest } from '@eeacms/search';
 
 import failed_scheduled_atempts_since_last_started_resp from './healthcheck_queries/failed_scheduled_atempts_since_last_started_resp.json';
@@ -24,6 +26,7 @@ const SLOTS = [
 jest.mock('@eeacms/search', () => ({
   SLOTS: SLOTS,
   runRequest: jest.fn(),
+  buildRequest: jest.fn(),
 }));
 
 const query1 = {
@@ -243,6 +246,47 @@ describe('test the status of the index', () => {
         Promise.resolve({
           body: last_sync_task_since_last_start_resp,
         }),
+        // )
+        // .mockReturnValueOnce(
+        //   Promise.resolve({
+        //     body: started_or_finished_site_since_last_started_resp,
+        //   }),
+      );
+    const params = { index_name: 'test_index', now: 1695732000000 };
+    const status = await getStatus({}, params);
+    expect(status).toEqual({ status: 'OK' });
+  });
+});
+
+describe('test the healthcheck', () => {
+  it('test', async () => {
+    runRequest
+      .mockReturnValueOnce(
+        Promise.resolve({ body: { hits: { total: { value: 60001 } } } }),
+      )
+      .mockReturnValueOnce(
+        Promise.resolve({
+          body: {
+            elapsed: {
+              step1: [{ query: { delta: 0.5 } }],
+              step2: [{ query: { delta: 0.6 } }],
+            },
+          },
+        }),
+      )
+
+      .mockReturnValueOnce(
+        Promise.resolve({ body: last_scheduled_started_indexing_resp }),
+      )
+      .mockReturnValueOnce(
+        Promise.resolve({
+          body: failed_scheduled_atempts_since_last_started_resp,
+        }),
+      )
+      .mockReturnValueOnce(
+        Promise.resolve({
+          body: last_sync_task_since_last_start_resp,
+        }),
       )
       .mockReturnValueOnce(
         Promise.resolve({
@@ -250,7 +294,7 @@ describe('test the status of the index', () => {
         }),
       );
     const params = { index_name: 'test_index', now: 1695732000000 };
-    const status = await getStatus({}, params);
-    expect(status).toEqual({ status: 'OK' });
+    const status = await healthcheck({}, params);
+    expect(status).toEqual({ status: '1K' });
   });
 });
