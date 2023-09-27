@@ -27,7 +27,7 @@ async function executeQuery(q, appConfig, params = {}) {
   return new Promise(async (resolve, reject) => {
     params['index_name'] = 'status_' + appConfig['index_name'];
     const query = buildQuery(q, params);
-    console.log(JSON.stringify(query));
+    //console.log(JSON.stringify(query));
     const resp = await runRequest(query, appConfig);
     // console.log(JSON.stringify(resp.body));
     resolve(resp.body);
