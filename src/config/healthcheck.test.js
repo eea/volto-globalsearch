@@ -1,5 +1,17 @@
-import { buildQuery } from './healthcheck';
-
+import {
+  buildQuery,
+  getlastfailed_execution,
+  getlastandnext_started_execution,
+  getlastsynctaskssincestarted,
+  getlatesttasks_for_site,
+  getlastsuccessfultasks_for_site,
+} from './healthcheck';
+import failed_scheduled_atempts_since_last_started_resp from './healthcheck_queries/failed_scheduled_atempts_since_last_started_resp.json';
+import last_scheduled_started_indexing_resp from './healthcheck_queries/last_scheduled_started_indexing_resp.json';
+import last_sync_task_since_last_start_resp from './healthcheck_queries/last_sync_task_since_last_start_resp.json';
+import latest_tasks_for_site_resp from './healthcheck_queries/latest_tasks_for_site_resp.json';
+import started_or_finished_site_since_last_started_resp from './healthcheck_queries/started_or_finished_site_since_last_started_resp.json';
+import empty_resp from './healthcheck_queries/empty_resp.json';
 const SLOTS = [
   'aboveSearchInput',
   'belowSearchInput',
@@ -108,7 +120,7 @@ const built_query3 = {
   index: 'test_index',
 };
 
-describe('build_test_query', () => {
+describe('test building the queries', () => {
   it('should replace 1 string variable with the value in the query', () => {
     const params = { index_name: 'test_index' };
     const bQuery = buildQuery(query1, params);
@@ -129,5 +141,85 @@ describe('build_test_query', () => {
     };
     const bQuery = buildQuery(query3, params);
     expect(bQuery).toEqual(built_query3);
+  });
+});
+
+describe('test parsing the response from elasticsearch for correct response', () => {
+  it('should return last_started and next_execution_date', () => {
+    const resp = getlastandnext_started_execution(
+      last_scheduled_started_indexing_resp,
+    );
+    expect(resp).toEqual({
+      last_started: 1695732613000,
+      next_execution_date: 1695732900000,
+    });
+  });
+
+  it('should return last_started and next_execution_date of failed task', () => {
+    const resp = getlastfailed_execution(
+      failed_scheduled_atempts_since_last_started_resp,
+    );
+    expect(resp).toEqual({
+      last_started: 1695732613000,
+      next_execution_date: 1695732900000,
+    });
+  });
+
+  it('should return list of clusters', () => {
+    const resp = getlastsynctaskssincestarted(
+      last_sync_task_since_last_start_resp,
+    );
+    expect(resp).toEqual({ sites: ['test_site1', 'test_site2'] });
+  });
+
+  it('if the last task for a site did not fail, return "OK"', async () => {
+    const resp = await getlatesttasks_for_site(latest_tasks_for_site_resp);
+    expect(resp).toEqual('OK');
+  });
+
+  it('if the last task for a site was succesful, return true', async () => {
+    const resp = getlastsuccessfultasks_for_site(
+      started_or_finished_site_since_last_started_resp,
+    );
+    expect(resp).toEqual(true);
+  });
+});
+
+describe('test parsing the response from elasticsearch for empty response', () => {
+  it('should return no results', () => {
+    try {
+      getlastandnext_started_execution(empty_resp);
+    } catch (e) {
+      expect(e.message).toEqual('no results');
+    }
+  });
+
+  it('should return no results', () => {
+    try {
+      getlastfailed_execution(empty_resp);
+    } catch (e) {
+      expect(e.message).toEqual('no results');
+    }
+  });
+
+  it('should return list of clusters', () => {
+    try {
+      getlastsynctaskssincestarted(empty_resp);
+    } catch (e) {
+      expect(e.message).toEqual('no results');
+    }
+  });
+
+  it('if the last task for a site did not fail, return "OK"', async () => {
+    try {
+      await getlatesttasks_for_site(empty_resp);
+    } catch (e) {
+      expect(e.message).toEqual('Failed to get info');
+    }
+  });
+
+  it("if the can't take the status for the last task for a site, return false", async () => {
+    const resp = getlastsuccessfultasks_for_site(empty_resp);
+    expect(resp).toEqual(false);
   });
 });
