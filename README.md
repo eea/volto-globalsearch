@@ -14,8 +14,11 @@
 [![Bugs](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-globalsearch-develop&metric=bugs)](https://sonarqube.eea.europa.eu/dashboard?id=volto-globalsearch-develop)
 [![Duplicated Lines (%)](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-globalsearch-develop&metric=duplicated_lines_density)](https://sonarqube.eea.europa.eu/dashboard?id=volto-globalsearch-develop)
 
-
 EEA Elastic Search Block with NLP integration [Volto](https://github.com/plone/volto) add-on
+
+## Features
+
+![Globalsearch](https://raw.githubusercontent.com/eea/volto-globalsearch/master/docs/volto-globalsearch.gif)
 
 ## Demo
 
@@ -58,7 +61,7 @@ Go to http://localhost:3000
 
    ```
    npm install -g yo @plone/generator-volto
-   yo @plone/volto my-volto-project --addon @eeacms/volto-globalsearch
+   yo @plone/volto my-volto-project --canary --addon @eeacms/volto-globalsearch
    cd my-volto-project
    ```
 

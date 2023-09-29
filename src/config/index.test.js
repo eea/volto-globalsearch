@@ -1,4 +1,6 @@
 import install from './index';
+import globalSearchConfig from './global-search-config.js';
+
 import '@testing-library/jest-dom/extend-expect';
 
 const SLOTS = [
@@ -171,5 +173,19 @@ describe('getActiveFilters', () => {
         field: 'foo',
       },
     ]);
+  });
+});
+
+describe('getGlobalsearchConfig', () => {
+  it('should have customized permanent filters for globalsearch', () => {
+    const index = globalSearchConfig.permanentFilters.findIndex(
+      (f) => f.id === 'constantScore',
+    );
+    const constantScore = globalSearchConfig.permanentFilters[index]();
+    expect(constantScore.constant_score.filter.bool['must_not']).toEqual({
+      exists: {
+        field: 'exclude_from_globalsearch',
+      },
+    });
   });
 });

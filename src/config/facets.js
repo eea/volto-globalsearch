@@ -223,7 +223,7 @@ const facets = [
       { from: 0, to: 4.99999, key: 'Short (<5 minutes)' },
       { from: 5, to: 24.9999, key: 'Medium (5-25 minutes)' },
       { from: 25, to: 10000, key: 'Large (25+ minutes)' },
-      //        { to: -0.0001, key: 'Unknown' },
+      { to: -0.0001, key: 'Not applicable' },
     ],
     // factory: 'ModalFixedRangeFacet',
     default: {
