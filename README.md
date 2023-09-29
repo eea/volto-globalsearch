@@ -45,25 +45,25 @@ Go to http://localhost:3000
 
 1. Start Volto frontend
 
-- If you already have a volto project, just update `package.json`:
+* If you already have a volto project, just update `package.json`:
 
-  ```JSON
-  "addons": [
-      "@eeacms/volto-globalsearch"
-  ],
+   ```JSON
+   "addons": [
+       "@eeacms/volto-globalsearch"
+   ],
 
-  "dependencies": {
-      "@eeacms/volto-globalsearch": "*"
-  }
-  ```
+   "dependencies": {
+       "@eeacms/volto-globalsearch": "*"
+   }
+   ```
 
-- If not, create one:
+* If not, create one:
 
-  ```
-  npm install -g yo @plone/generator-volto
-  yo @plone/volto my-volto-project --addon @eeacms/volto-globalsearch
-  cd my-volto-project
-  ```
+   ```
+   npm install -g yo @plone/generator-volto
+   yo @plone/volto my-volto-project --canary --addon @eeacms/volto-globalsearch
+   cd my-volto-project
+   ```
 
 1. Install new add-ons and restart Volto:
 
