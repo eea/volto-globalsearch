@@ -76,6 +76,38 @@ Go to http://localhost:3000
 
 1. Happy editing!
 
+# Customizing the volto-searchblock
+
+## Modifying Clusters
+
+To customize the behavior of the `volto-searchblock` in your Volto theme, you can modify clusters by following these steps:
+
+ 1. Find or create `index.js` in the `src/config`
+
+      In your theme addon, create the `src/config/index.js` file. You can refer to the [example file](https://github.com/eea/volto-marine-theme/blob/eea-design/src/config/index.js) in the `volto-marine-theme` repository.
+
+2. Locate and Modify Clusters
+
+   Clusters are found in `config.searchui.<name_of_search>.runtime_mappings`. For example, in the case of the `volto-marine-theme`, the `<name_of_search>` was `marinemeasure`, and clusters are located in `config.searchui.marinemeasure.runtime_mappings`.
+
+3. Use `build_runtime_mappings` Function
+   You have to pass the clusters transformed by build_runtime_mappings function. Import the `build_runtime_mappings` as follows:
+
+     ```javascript
+      import { build_runtime_mappings } from '@eeacms/volto-globalsearch/utils';
+     ```
+4. Default Clusters
+
+   Default clusters are defined [here](https://github.com/eea/volto-globalsearch/blob/master/src/config/clusters.js). Decide whether you want to override all clusters or modify specific ones.
+
+5. Example Modification
+
+   Here's an example of how the Publications cluster was modified in the CountryFactsheet by keeping the rest as default: https://github.com/eea/volto-marine-theme/pull/43/files.
+
+6. Cluster Structure
+
+   Be aware that a cluster contains the `values` key that holds the `content types` on which the cluster will act.
+
 ## Release
 
 See [RELEASE.md](https://github.com/eea/volto-globalsearch/blob/master/RELEASE.md).
