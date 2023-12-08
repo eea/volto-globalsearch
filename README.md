@@ -80,7 +80,7 @@ Go to http://localhost:3000
 
 ## Modifying Clusters
 
-To customize the behavior of the `volto-searchblock` in your Volto theme, you can modify clusters by following these steps:
+To customize the behavior of the `volto-searchblock` in your volto theme addon, you can modify clusters by following these steps:
 
  1. Find or create `index.js` in the `src/config`
 
