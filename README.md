@@ -95,14 +95,14 @@ To customize the behavior of the `volto-searchblock` in your volto theme addon, 
    You have to pass the clusters transformed by build_runtime_mappings function. Import the `build_runtime_mappings` as follows:
 
      ```javascript
-      import { clusters } from '@eeacms/volto-globalsearch/config/clusters';
+      import { build_runtime_mappings } from '@eeacms/volto-globalsearch/utils';
      ```
 5. Default Clusters
 
    Default clusters are defined [here](https://github.com/eea/volto-globalsearch/blob/master/src/config/clusters.js). Decide whether you want to override all clusters or modify specific ones.
    If you decided to modify them, you can import them in your addon as follows:
    ```javascript
-   import { build_runtime_mappings } from '@eeacms/volto-globalsearch/utils';
+   import { clusters } from '@eeacms/volto-globalsearch/config/clusters';
    ```
 
 6. Example Modification
