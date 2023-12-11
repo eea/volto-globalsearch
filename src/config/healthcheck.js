@@ -24,8 +24,7 @@ export function buildQuery(query, values) {
 }
 
 async function executeQuery(q, appConfig, params = {}, callback) {
-  /* eslint-disable no-async-promise-executor */
-  return new Promise(async (resolve, reject) => {
+  return async (resolve, reject) => {
     try {
       params['index_name'] = 'status_' + appConfig['index_name'];
       const query = buildQuery(q, params);
@@ -36,7 +35,7 @@ async function executeQuery(q, appConfig, params = {}, callback) {
     } catch (e) {
       reject({ error: e.message });
     }
-  });
+  };
 }
 
 export function getlastandnext_started_execution(body, params = {}) {
@@ -107,7 +106,7 @@ export function getlatesttasks_for_site(body, params = {}) {
 
 export async function getStatus(appConfig, params) {
   /* eslint-disable no-async-promise-executor */
-  return new Promise(async (resolve, reject) => {
+  return async (resolve, reject) => {
     let resp = 'OK';
     let error = null;
     // console.log('=======================================');
@@ -229,7 +228,7 @@ export async function getStatus(appConfig, params) {
       status.error = error;
     }
     resolve(status);
-  });
+  };
 }
 export default async function healthcheck(appConfig, params) {
   // is index ok?
@@ -238,8 +237,7 @@ export default async function healthcheck(appConfig, params) {
   // nlpservice provides answer based on extracted term
   // number of documents with error in data raw, type of error
 
-  /* eslint-disable no-async-promise-executor */
-  return new Promise(async (resolve, reject) => {
+  return async (resolve, reject) => {
     try {
       let {
         documentCountThreshold,
@@ -337,5 +335,5 @@ export default async function healthcheck(appConfig, params) {
     } catch (e) {
       reject({ status: 'Critical', error: e.message });
     }
-  });
+  };
 }
