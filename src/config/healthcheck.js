@@ -24,7 +24,7 @@ export function buildQuery(query, values) {
 }
 
 async function executeQuery(q, appConfig, params = {}, callback) {
-  return new Promise(async (resolve, reject) => {
+  return new Promise((resolve, reject) => {
     try {
       params['index_name'] = 'status_' + appConfig['index_name'];
       const query = buildQuery(q, params);
@@ -105,7 +105,7 @@ export function getlatesttasks_for_site(body, params = {}) {
 }
 
 export async function getStatus(appConfig, params) {
-  return new Promise(async (resolve, reject) => {
+  return new Promise((resolve, reject) => {
     let resp = 'OK';
     let error = null;
     // console.log('=======================================');
@@ -236,7 +236,7 @@ export default async function healthcheck(appConfig, params) {
   // nlpservice provides answer based on extracted term
   // number of documents with error in data raw, type of error
 
-  return new Promise(async (resolve, reject) => {
+  return new Promise((resolve, reject) => {
     try {
       let {
         documentCountThreshold,
