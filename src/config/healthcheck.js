@@ -24,18 +24,12 @@ export function buildQuery(query, values) {
 }
 
 async function executeQuery(q, appConfig, params = {}, callback) {
-  return new Promise(async (resolve, reject) => {
-    try {
-      params['index_name'] = 'status_' + appConfig['index_name'];
-      const query = buildQuery(q, params);
-      //console.log(JSON.stringify(query));
-      const resp = await runRequest(query, appConfig);
-      // console.log(JSON.stringify(resp.body));
-      resolve(callback(resp.body, params));
-    } catch (e) {
-      reject({ error: e.message });
-    }
-  });
+  params['index_name'] = 'status_' + appConfig['index_name'];
+  const query = buildQuery(q, params);
+  //console.log(JSON.stringify(query));
+  const resp = await runRequest(query, appConfig);
+  // console.log(JSON.stringify(resp.body));
+  return Promise.resolve(callback(resp.body, params));
 }
 
 export function getlastandnext_started_execution(body, params = {}) {
@@ -105,130 +99,129 @@ export function getlatesttasks_for_site(body, params = {}) {
 }
 
 export async function getStatus(appConfig, params) {
-  return new Promise(async (resolve, reject) => {
-    let resp = 'OK';
-    let error = null;
-    // console.log('=======================================');
-    // console.log('STEP 1');
-    const step1 = await executeQuery(
-      last_scheduled_started_indexing,
-      appConfig,
-      {},
-      getlastandnext_started_execution,
-    );
+  let resp = 'OK';
+  let error = null;
+  // console.log('=======================================');
+  // console.log('STEP 1');
+  const step1 = await executeQuery(
+    last_scheduled_started_indexing,
+    appConfig,
+    {},
+    getlastandnext_started_execution,
+  );
 
-    // console.log(step1);
+  // console.log(step1);
 
-    // const last_successful_schedule = step1.last_started;
-    let next_schedule = step1.next_execution_date;
+  // const last_successful_schedule = step1.last_started;
+  let next_schedule = step1.next_execution_date;
 
-    const now = params.now || Date.now() - 60 * 1000;
-    if (now >= next_schedule) {
+  const now = params.now || Date.now() - 60 * 1000;
+  if (now >= next_schedule) {
+    try {
+      // console.log('=======================================');
+      // console.log('STEP 2');
+      const step2 = await executeQuery(
+        failed_scheduled_atempts_since_last_started,
+        appConfig,
+        step1,
+        getlastfailed_execution,
+      );
+      next_schedule = step2.next_execution_date;
+      // console.log(step2);
+    } catch {
+      resp = 'CRITICAL';
+      error = 'Failed to get status info from elasticsearch';
+    }
+  }
+  if (error === null) {
+    if (now > next_schedule) {
+      resp = 'CRITICAL';
+      error = 'Airflow stopped indexing, no new schedules in the queue';
+    } else {
       try {
-        // console.log('=======================================');
-        // console.log('STEP 2');
-        const step2 = await executeQuery(
-          failed_scheduled_atempts_since_last_started,
+        const step3 = await executeQuery(
+          last_sync_task_since_last_start,
           appConfig,
           step1,
-          getlastfailed_execution,
+          getlastsynctaskssincestarted,
         );
-        next_schedule = step2.next_execution_date;
-        // console.log(step2);
-      } catch {
-        resp = 'CRITICAL';
-        error = 'Failed to get status info from elasticsearch';
-      }
-    }
-    if (error === null) {
-      if (now > next_schedule) {
-        resp = 'CRITICAL';
-        error = 'Airflow stopped indexing, no new schedules in the queue';
-      } else {
-        try {
-          const step3 = await executeQuery(
-            last_sync_task_since_last_start,
-            appConfig,
-            step1,
-            getlastsynctaskssincestarted,
-          );
-          // console.log(step3.sites);
-          const all_sites_status = {};
-          for (let i = 0; i < step3.sites.length; i++) {
-            try {
-              // console.log('=======================================');
-              // console.log('STEP 4');
-              // const step4 =
-              await executeQuery(
-                started_or_finished_site_since_last_started,
-                appConfig,
-                {
-                  site_name: step3.sites[i],
-                  last_started: step1['last_started'],
-                },
-                getlastsuccessfultasks_for_site,
-              );
-              all_sites_status[step3.sites[i]] = 'OK';
-              // console.log(step4);
-            } catch {
-              // console.log('=======================================');
-              // console.log('STEP 5');
-              const step5 = await executeQuery(
-                latest_tasks_for_site,
-                appConfig,
-                {
-                  site_name: step3.sites[i],
-                  last_started: step1['last_started'],
-                  THRESHOLD_WARNING: parseInt(
-                    params.FAILED_SYNC_THRESHOLD_WARNING,
-                  ),
-                  THRESHOLD_OK: parseInt(params.FAILED_SYNC_THRESHOLD_OK),
-                },
-                getlatesttasks_for_site,
-              );
-              all_sites_status[step3.sites[i]] = step5;
-            }
+        // console.log(step3.sites);
+        const all_sites_status = {};
+        for (let i = 0; i < step3.sites.length; i++) {
+          try {
+            // console.log('=======================================');
+            // console.log('STEP 4');
+            // const step4 =
+            await executeQuery(
+              started_or_finished_site_since_last_started,
+              appConfig,
+              {
+                site_name: step3.sites[i],
+                last_started: step1['last_started'],
+              },
+              getlastsuccessfultasks_for_site,
+            );
+            all_sites_status[step3.sites[i]] = 'OK';
+            // console.log(step4);
+          } catch {
+            // console.log('=======================================');
+            // console.log('STEP 5');
+            const step5 = await executeQuery(
+              latest_tasks_for_site,
+              appConfig,
+              {
+                site_name: step3.sites[i],
+                last_started: step1['last_started'],
+                THRESHOLD_WARNING: parseInt(
+                  params.FAILED_SYNC_THRESHOLD_WARNING,
+                ),
+                THRESHOLD_OK: parseInt(params.FAILED_SYNC_THRESHOLD_OK),
+              },
+              getlatesttasks_for_site,
+            );
+            all_sites_status[step3.sites[i]] = step5;
           }
-          // console.log(all_sites_status);
-          const oks = [];
-          const warnings = [];
-          const criticals = [];
-          for (let i = 0; i < step3.sites.length; i++) {
-            if (all_sites_status[step3.sites[i]] === 'OK') {
-              oks.push(step3.sites[i]);
-            }
-            if (all_sites_status[step3.sites[i]] === 'WARNING') {
-              warnings.push(step3.sites[i]);
-            }
-            if (all_sites_status[step3.sites[i]] === 'CRITICAL') {
-              criticals.push(step3.sites[i]);
-            }
-            if (criticals.length > 0) {
+        }
+        // console.log(all_sites_status);
+        const oks = [];
+        const warnings = [];
+        const criticals = [];
+        for (let i = 0; i < step3.sites.length; i++) {
+          if (all_sites_status[step3.sites[i]] === 'OK') {
+            oks.push(step3.sites[i]);
+          }
+          if (all_sites_status[step3.sites[i]] === 'WARNING') {
+            warnings.push(step3.sites[i]);
+          }
+          if (all_sites_status[step3.sites[i]] === 'CRITICAL') {
+            criticals.push(step3.sites[i]);
+          }
+          if (criticals.length > 0) {
+            error =
+              'Clusters with too many fails: ' +
+              criticals.concat(warnings).join(', ');
+            resp = 'CRITICAL';
+          } else {
+            if (warnings.length > 0) {
               error =
                 'Clusters with too many fails: ' +
                 criticals.concat(warnings).join(', ');
-              resp = 'CRITICAL';
-            } else {
-              if (warnings.length > 0) {
-                error =
-                  'Clusters with too many fails: ' +
-                  criticals.concat(warnings).join(', ');
-                resp = 'WARNING';
-              }
+              resp = 'WARNING';
             }
           }
-        } catch {
-          error = 'Failed to get status info from elasticsearch';
         }
+      } catch {
+        error = 'Failed to get status info from elasticsearch';
       }
     }
-    const status = { status: resp };
-    if (error !== null) {
-      status.error = error;
-    }
-    resolve(status);
-  });
+  }
+  const status = { status: resp };
+  if (error !== null) {
+    status.error = error;
+  }
+  return Promise.resolve(status);
 }
+
 export default async function healthcheck(appConfig, params) {
   // is index ok?
   // return index update date
@@ -236,103 +229,101 @@ export default async function healthcheck(appConfig, params) {
   // nlpservice provides answer based on extracted term
   // number of documents with error in data raw, type of error
 
-  return new Promise(async (resolve, reject) => {
-    try {
-      let {
-        documentCountThreshold,
-        queryTimeSecondsThreshold_OK,
-        queryTimeSecondsThreshold_WARNING,
-        failedSyncThreshold_OK,
-        failedSyncThreshold_WARNING,
-        now,
-      } = params;
-      documentCountThreshold =
-        documentCountThreshold || default_documentCountThreshold;
-      queryTimeSecondsThreshold_OK =
-        queryTimeSecondsThreshold_OK || default_queryTimeSecondsThreshold_OK;
-      queryTimeSecondsThreshold_WARNING =
-        queryTimeSecondsThreshold_WARNING ||
-        default_queryTimeSecondsThreshold_WARNING;
-      failedSyncThreshold_OK =
-        failedSyncThreshold_OK || default_failedSyncThreshold_OK;
-      failedSyncThreshold_WARNING =
-        failedSyncThreshold_WARNING || default_failedSyncThreshold_WARNING;
+  try {
+    let {
+      documentCountThreshold,
+      queryTimeSecondsThreshold_OK,
+      queryTimeSecondsThreshold_WARNING,
+      failedSyncThreshold_OK,
+      failedSyncThreshold_WARNING,
+      now,
+    } = params;
+    documentCountThreshold =
+      documentCountThreshold || default_documentCountThreshold;
+    queryTimeSecondsThreshold_OK =
+      queryTimeSecondsThreshold_OK || default_queryTimeSecondsThreshold_OK;
+    queryTimeSecondsThreshold_WARNING =
+      queryTimeSecondsThreshold_WARNING ||
+      default_queryTimeSecondsThreshold_WARNING;
+    failedSyncThreshold_OK =
+      failedSyncThreshold_OK || default_failedSyncThreshold_OK;
+    failedSyncThreshold_WARNING =
+      failedSyncThreshold_WARNING || default_failedSyncThreshold_WARNING;
 
-      const airflow_params = {
-        FAILED_SYNC_THRESHOLD_WARNING: failedSyncThreshold_WARNING,
-        FAILED_SYNC_THRESHOLD_OK: failedSyncThreshold_OK,
-        now: now,
-      };
+    const airflow_params = {
+      FAILED_SYNC_THRESHOLD_WARNING: failedSyncThreshold_WARNING,
+      FAILED_SYNC_THRESHOLD_OK: failedSyncThreshold_OK,
+      now: now,
+    };
 
-      ///////////////////
-      const body_total = buildRequest({ filters: [] }, appConfig);
-      //console.log(body_total);
-      const resp_total = await runRequest(body_total, appConfig);
-      const total = resp_total.body.hits.total.value;
-      const total_status =
-        total > documentCountThreshold
-          ? { status: 'OK' }
-          : {
-              status: 'CRITICAL',
-              error:
-                'The number of documents in elasticsearch dropped drastically',
-            };
-      const body_nlp = buildRequest(
-        { filters: [], searchTerm: 'what is bise?' },
-        appConfig,
-      );
-      const resp_nlp = await runRequest(body_nlp, appConfig);
-      const elapsed = resp_nlp.body.elapsed;
+    ///////////////////
+    const body_total = buildRequest({ filters: [] }, appConfig);
+    //console.log(body_total);
+    const resp_total = await runRequest(body_total, appConfig);
+    const total = resp_total.body.hits.total.value;
+    const total_status =
+      total > documentCountThreshold
+        ? { status: 'OK' }
+        : {
+            status: 'CRITICAL',
+            error:
+              'The number of documents in elasticsearch dropped drastically',
+          };
+    const body_nlp = buildRequest(
+      { filters: [], searchTerm: 'what is bise?' },
+      appConfig,
+    );
+    const resp_nlp = await runRequest(body_nlp, appConfig);
+    const elapsed = resp_nlp.body.elapsed;
 
-      let total_elapsed = 0;
-      Object.keys(elapsed).forEach((key) => {
-        elapsed[key].forEach((nlp_step) => {
-          Object.keys(nlp_step).forEach((step_name) => {
-            total_elapsed += nlp_step[step_name].delta;
-          });
+    let total_elapsed = 0;
+    Object.keys(elapsed).forEach((key) => {
+      elapsed[key].forEach((nlp_step) => {
+        Object.keys(nlp_step).forEach((step_name) => {
+          total_elapsed += nlp_step[step_name].delta;
         });
       });
+    });
 
-      const elapsed_status =
-        total_elapsed < queryTimeSecondsThreshold_OK
-          ? { status: 'OK' }
-          : total_elapsed < queryTimeSecondsThreshold_WARNING
-          ? { status: 'WARNING', error: 'Slow response from NLP' }
-          : { status: 'CRITICAL', error: 'Slow response from NLP' };
+    const elapsed_status =
+      total_elapsed < queryTimeSecondsThreshold_OK
+        ? { status: 'OK' }
+        : total_elapsed < queryTimeSecondsThreshold_WARNING
+        ? { status: 'WARNING', error: 'Slow response from NLP' }
+        : { status: 'CRITICAL', error: 'Slow response from NLP' };
 
-      const airflow_status = await getStatus(appConfig, airflow_params);
+    const airflow_status = await getStatus(appConfig, airflow_params);
 
-      let status = { status: 'OK' };
-      if (
-        elapsed_status.status === 'WARNING' ||
-        airflow_status.status === 'WARNING'
-      ) {
-        status = { status: 'WARNING' };
-      }
-      if (
-        total_status.status === 'CRITICAL' ||
-        elapsed_status.status === 'CRITICAL' ||
-        airflow_status.status === 'CRITICAL'
-      ) {
-        status = { status: 'CRITICAL' };
-      }
-
-      const errors_list = [];
-      if (total_status.error) {
-        errors_list.push(total_status.error);
-      }
-      if (elapsed_status.error) {
-        errors_list.push(elapsed_status.error);
-      }
-      if (airflow_status.error) {
-        errors_list.push(airflow_status.error);
-      }
-      if (errors_list.length > 0) {
-        status.error = errors_list.join('\n');
-      }
-      resolve(status);
-    } catch (e) {
-      reject({ status: 'Critical', error: e.message });
+    let status = { status: 'OK' };
+    if (
+      elapsed_status.status === 'WARNING' ||
+      airflow_status.status === 'WARNING'
+    ) {
+      status = { status: 'WARNING' };
     }
-  });
+    if (
+      total_status.status === 'CRITICAL' ||
+      elapsed_status.status === 'CRITICAL' ||
+      airflow_status.status === 'CRITICAL'
+    ) {
+      status = { status: 'CRITICAL' };
+    }
+
+    const errors_list = [];
+    if (total_status.error) {
+      errors_list.push(total_status.error);
+    }
+    if (elapsed_status.error) {
+      errors_list.push(elapsed_status.error);
+    }
+    if (airflow_status.error) {
+      errors_list.push(airflow_status.error);
+    }
+    if (errors_list.length > 0) {
+      status.error = errors_list.join('\n');
+    }
+    return Promise.resolve(status);
+  } catch (e) {
+    return Promise.reject({ status: 'Critical', error: e.message });
+  }
 }
