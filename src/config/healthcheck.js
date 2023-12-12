@@ -24,16 +24,12 @@ export function buildQuery(query, values) {
 }
 
 async function executeQuery(q, appConfig, params = {}, callback) {
-  try {
-    params['index_name'] = 'status_' + appConfig['index_name'];
-    const query = buildQuery(q, params);
-    //console.log(JSON.stringify(query));
-    const resp = await runRequest(query, appConfig);
-    // console.log(JSON.stringify(resp.body));
-    return Promise.resolve(callback(resp.body, params));
-  } catch (e) {
-    return Promise.reject({ error: e.message });
-  }
+  params['index_name'] = 'status_' + appConfig['index_name'];
+  const query = buildQuery(q, params);
+  //console.log(JSON.stringify(query));
+  const resp = await runRequest(query, appConfig);
+  // console.log(JSON.stringify(resp.body));
+  return Promise.resolve(callback(resp.body, params));
 }
 
 export function getlastandnext_started_execution(body, params = {}) {
