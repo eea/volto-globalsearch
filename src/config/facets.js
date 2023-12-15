@@ -274,6 +274,51 @@ const facets = [
     sortOn: 'custom',
     sortOnCustomLabel: 'Alphabetical',
   }),
+  multiTermFacet({
+    field: 'dpsir.keyword',
+    isFilterable: false,
+    isMulti: true,
+    label: 'DPSIR',
+  }),
+  multiTermFacet({
+    field: 'typology.keyword',
+    isFilterable: false,
+    isMulti: true,
+    label: 'Typology',
+  }),
+  multiTermFacet({
+    field: 'un_sdgs.keyword',
+    isFilterable: false,
+    isMulti: true,
+    label: 'UN SDGs',
+  }),
+  multiTermFacet({
+    field: 'data_provenances_organisations.keyword',
+    isFilterable: false,
+    isMulti: true,
+    label: 'Data sources',
+  }),
+  multiTermFacet({
+    field: 'creators.keyword',
+    isFilterable: false,
+    isMulti: true,
+    label: 'Creators',
+    authOnly: true,
+  }),
+  multiTermFacet({
+    field: 'contributors.keyword',
+    isFilterable: false,
+    isMulti: true,
+    label: 'Contributors',
+  }),
+  multiTermFacet({
+    field: 'subject.keyword_lc',
+    isFilterable: true,
+    isMulti: true,
+    label: 'Tags',
+    sortOn: 'value',
+    sortOrder: 'desc',
+  }),
 ];
 
 export default {
