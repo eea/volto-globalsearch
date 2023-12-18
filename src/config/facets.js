@@ -12,6 +12,7 @@ import topicsBlacklist from './json/topicsBlacklist.json';
 import { getTodayWithTime } from '../utils';
 
 const languageCodes = [
+  'en',
   'ar',
   'sr',
   'sq',
@@ -22,7 +23,6 @@ const languageCodes = [
   'da',
   'nl',
   'el',
-  'en',
   'et',
   'fi',
   'fr',
@@ -273,6 +273,7 @@ const facets = [
     facetValues: languageCodes,
     sortOn: 'custom',
     sortOnCustomLabel: 'Alphabetical',
+    sortOrder: 'ascending',
   }),
   multiTermFacet({
     field: 'dpsir.keyword',
@@ -317,7 +318,7 @@ const facets = [
     isMulti: true,
     label: 'Tags',
     sortOn: 'value',
-    sortOrder: 'desc',
+    sortOrder: 'ascending',
   }),
 ];
 
