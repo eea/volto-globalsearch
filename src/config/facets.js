@@ -320,6 +320,12 @@ const facets = [
     sortOn: 'value',
     sortOrder: 'ascending',
   }),
+  multiTermFacet({
+    field: 'publishers.keyword',
+    isFilterable: false,
+    isMulti: true,
+    label: 'Publishers',
+  }),
 ];
 
 export default {
