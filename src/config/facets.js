@@ -295,20 +295,20 @@ const facets = [
   }),
   multiTermFacet({
     field: 'data_provenances_organisations.keyword',
-    isFilterable: false,
+    isFilterable: true,
     isMulti: true,
     label: 'Data sources',
   }),
   multiTermFacet({
     field: 'creators.keyword',
-    isFilterable: false,
+    isFilterable: true,
     isMulti: true,
     label: 'Creators',
     authOnly: true,
   }),
   multiTermFacet({
     field: 'contributors.keyword',
-    isFilterable: false,
+    isFilterable: true,
     isMulti: true,
     label: 'Contributors',
   }),
