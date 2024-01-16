@@ -12,6 +12,7 @@ import topicsBlacklist from './json/topicsBlacklist.json';
 import { getTodayWithTime } from '../utils';
 
 const languageCodes = [
+  'en',
   'ar',
   'sr',
   'sq',
@@ -22,7 +23,6 @@ const languageCodes = [
   'da',
   'nl',
   'el',
-  'en',
   'et',
   'fi',
   'fr',
@@ -273,6 +273,58 @@ const facets = [
     facetValues: languageCodes,
     sortOn: 'custom',
     sortOnCustomLabel: 'Alphabetical',
+    sortOrder: 'ascending',
+  }),
+  multiTermFacet({
+    field: 'dpsir.keyword',
+    isFilterable: false,
+    isMulti: true,
+    label: 'DPSIR',
+  }),
+  multiTermFacet({
+    field: 'typology.keyword',
+    isFilterable: false,
+    isMulti: true,
+    label: 'Typology',
+  }),
+  multiTermFacet({
+    field: 'un_sdgs.keyword',
+    isFilterable: false,
+    isMulti: true,
+    label: 'UN SDGs',
+  }),
+  multiTermFacet({
+    field: 'data_provenances_organisations.keyword',
+    isFilterable: true,
+    isMulti: true,
+    label: 'Data sources',
+  }),
+  multiTermFacet({
+    field: 'creators.keyword',
+    isFilterable: true,
+    isMulti: true,
+    label: 'Creators',
+    authOnly: true,
+  }),
+  multiTermFacet({
+    field: 'contributors.keyword',
+    isFilterable: true,
+    isMulti: true,
+    label: 'Contributors',
+  }),
+  multiTermFacet({
+    field: 'subject.keyword_lc',
+    isFilterable: true,
+    isMulti: true,
+    label: 'Tags',
+    sortOn: 'value',
+    sortOrder: 'ascending',
+  }),
+  multiTermFacet({
+    field: 'publishers.keyword',
+    isFilterable: false,
+    isMulti: true,
+    label: 'Publishers',
   }),
 ];
 
