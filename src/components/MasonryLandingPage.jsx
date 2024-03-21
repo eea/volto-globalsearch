@@ -200,9 +200,10 @@ const LandingPage = (props) => {
       landingDataAggs.aggregations.organisations.buckets.length;
     const topics = landingDataAggs.aggregations.topics.buckets.length;
     const languages = landingDataAggs.aggregations.languages.buckets.length;
-    const content_types = landingDataAggs.aggregations.content_types.buckets.filter(
-      (bucket) => objectProvidesWhitelist.indexOf(bucket.key) !== -1,
-    ).length;
+    const content_types =
+      landingDataAggs.aggregations.content_types.buckets.filter(
+        (bucket) => objectProvidesWhitelist.indexOf(bucket.key) !== -1,
+      ).length;
     const countries = landingDataAggs.aggregations.countries.buckets.filter(
       (bucket) => spatialWhitelist.indexOf(bucket.key) !== -1,
     ).length;

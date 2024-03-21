@@ -112,12 +112,10 @@ export default function install(config) {
 
   config.resolve.getGlobalSearchHealthcheck = healthcheck;
 
-  config.resolve.getGlobalsearchIconUrl = getGlobalsearchIconUrl(
-    contentTypeNormalize,
-  );
-  config.resolve.getGlobalsearchThumbUrl = getGlobalsearchThumbUrl(
-    contentTypeNormalize,
-  );
+  config.resolve.getGlobalsearchIconUrl =
+    getGlobalsearchIconUrl(contentTypeNormalize);
+  config.resolve.getGlobalsearchThumbUrl =
+    getGlobalsearchThumbUrl(contentTypeNormalize);
 
   config.resolve.typesForClustersOptionsFilter = typesForClustersOptionsFilter;
 
