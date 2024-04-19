@@ -60,4 +60,6 @@ const vocab = {
   },
 };
 
-export default { vocab };
+const vocabWrapper = { vocab };
+
+export default vocabWrapper;

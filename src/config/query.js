@@ -1,4 +1,4 @@
-export default {
+const query = {
   debugQuery: false,
   extraQueryParams: {
     text_fields: [
@@ -42,3 +42,5 @@ export default {
   //   ],
   // },
 };
+
+export default query;

@@ -70,7 +70,7 @@ export const clusters = {
 
 export const clusterIcons = get_cluster_icons(clusters);
 
-export default {
+const config = {
   icons: {
     'Content types': get_cluster_icons_dict(clusters),
     Sources: {
@@ -167,6 +167,8 @@ export default {
     ),
   },
 };
+
+export default config;
 
 export function typesForClustersOptionsFilter(options, filters) {
   // Only display content types that belong to the currently selected cluster
