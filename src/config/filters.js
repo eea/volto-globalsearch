@@ -25,10 +25,12 @@ function constantScore() {
 }
 constantScore.id = 'constantScore';
 
-export default {
+const filters = {
   // filter values that are always added to the ES requests
   permanentFilters: [
     { term: { hasWorkflowState: 'published' } },
     constantScore,
   ],
 };
+
+export default filters;

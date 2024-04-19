@@ -1,6 +1,6 @@
 import installGlobalsearch from './config';
 
-export default (config) => {
+const config = (config) => {
   config.settings.searchlib = installGlobalsearch(config.settings.searchlib);
 
   const { globalsearch, globalsearchbase } = config.settings.searchlib.searchui;
@@ -14,3 +14,5 @@ export default (config) => {
 
   return config;
 };
+
+export default config;
