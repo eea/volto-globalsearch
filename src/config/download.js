@@ -1,4 +1,4 @@
-export default {
+const download = {
   download_fields: [
     {
       field: 'about',
@@ -18,3 +18,5 @@ export default {
     },
   ],
 };
+
+export default download;

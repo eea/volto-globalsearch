@@ -328,9 +328,11 @@ const facets = [
   }),
 ];
 
-export default {
+const facetsWrapper = {
   facets,
 };
+
+export default facetsWrapper;
 
 // default filter values
 // TODO: this needs to be removed and the configuration plugged into each of

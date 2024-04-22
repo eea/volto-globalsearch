@@ -1,6 +1,6 @@
 import { clusterIcons } from './clusters';
 
-export default {
+const views = {
   resultViews: [
     {
       id: 'horizontalCard',
@@ -274,3 +274,5 @@ export default {
     ],
   },
 };
+
+export default views;
