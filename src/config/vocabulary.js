@@ -57,7 +57,7 @@ const vocab = {
     cab: 'Climate Advisory Board',
     discomap: 'DiscoMap',
     noise: 'NOISE Observation & Information Service for Europe',
-    "copernicus_insitu": "Copernicus In Situ",
+    copernicus_insitu: 'Copernicus In Situ',
   },
 };
 
