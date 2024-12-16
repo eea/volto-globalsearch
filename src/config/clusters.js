@@ -146,6 +146,9 @@ const config = {
       noise: {
         url: require('../static/eea-logo.svg'),
       },
+      copernicus_insitu: {
+        url: require('../static/copernicus_insitu_logo.svg'),
+      },
     },
     Countries: {
       fallback: {
