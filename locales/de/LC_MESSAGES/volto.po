@@ -11,4 +11,27 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+#: config/facets
+# defaultMessage: Include archived content
+msgid "Include archived content"
+msgstr "Archivierte Inhalte einbeziehen"
 
+#: config/global-search-base-config
+# defaultMessage: Newest
+msgid "Newest"
+msgstr "Neueste"
+
+#: config/global-search-base-config
+# defaultMessage: Oldest
+msgid "Oldest"
+msgstr "Älteste"
+
+#: config/global-search-base-config
+# defaultMessage: Title a-z
+msgid "Title a-z"
+msgstr "Titel a-z"
+
+#: config/global-search-base-config
+# defaultMessage: Title z-a
+msgid "Title z-a"
+msgstr "Titel z-a"
