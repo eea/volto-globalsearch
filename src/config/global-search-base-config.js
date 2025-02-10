@@ -12,7 +12,7 @@ import objectProvidesWhitelist from './json/objectProvidesWhitelist.json';
 import spatialWhitelist from './json/spatialWhitelist.json';
 import placesBlacklist from './json/placesBlacklist.json';
 import typesWhitelist from './json/typesWhitelist.json';
-import { defineMessages, FormattedMessage } from 'react-intl';
+import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
   sortTitleAZ: {
@@ -86,28 +86,21 @@ const globalSearchBaseConfig = {
   sortOptions: [
     {
       name: messages.sortTitleAZ,
-      // name: ({ intl }) => intl.formatMessage(messages.sortTitleAZ),
-      // name: <FormattedMessage id="Title a-z" defaultMessage="Title a-z" />,
-      // name: <FormattedMessage id="Title a-z" defaultMessage="Title a-z" />,
       value: 'title.index',
       direction: 'asc',
     },
     {
       name: messages.sortTitleZA,
-      // name: ({ intl }) => intl.formatMessage(messages.titleZA),
-      // name: <FormattedMessage id="Title z-a" defaultMessage="Title z-a" />,
       value: 'title.index',
       direction: 'desc',
     },
     {
       name: messages.sortOldest,
-      // name: <FormattedMessage id="Oldest" defaultMessage="Oldest" />,
       value: 'issued.date',
       direction: 'asc',
     },
     {
       name: messages.sortNewest,
-      // name: <FormattedMessage id="Newest" defaultMessage="Newest" />,
       value: 'issued.date',
       direction: 'desc',
     },
