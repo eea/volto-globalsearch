@@ -14,24 +14,24 @@ msgstr ""
 #: config/facets
 # defaultMessage: Include archived content
 msgid "Include archived content"
-msgstr "Includi contenuti archiviati"
+msgstr "Включете архивирано съдържание"
 
 #: config/global-search-base-config
 # defaultMessage: Newest
 msgid "Newest"
-msgstr "Più recente"
+msgstr "Най-новите"
 
 #: config/global-search-base-config
 # defaultMessage: Oldest
 msgid "Oldest"
-msgstr "Il più antico"
+msgstr "Най-старият"
 
 #: config/global-search-base-config
 # defaultMessage: Title a-z
 msgid "Title a-z"
-msgstr "Titolo dalla a alla z"
+msgstr "Заглавие a-z"
 
 #: config/global-search-base-config
 # defaultMessage: Title z-a
 msgid "Title z-a"
-msgstr "Titolo z-a"
+msgstr "Заглавие z-a"

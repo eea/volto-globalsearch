@@ -11,4 +11,27 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+#: config/facets
+# defaultMessage: Include archived content
+msgid "Include archived content"
+msgstr "Includeți conținut arhivat"
 
+#: config/global-search-base-config
+# defaultMessage: Newest
+msgid "Newest"
+msgstr "Cel mai nou"
+
+#: config/global-search-base-config
+# defaultMessage: Oldest
+msgid "Oldest"
+msgstr "Cel mai vechi"
+
+#: config/global-search-base-config
+# defaultMessage: Title a-z
+msgid "Title a-z"
+msgstr "Titlul a-z"
+
+#: config/global-search-base-config
+# defaultMessage: Title z-a
+msgid "Title z-a"
+msgstr "Titlul z-a"
