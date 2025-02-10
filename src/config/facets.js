@@ -11,6 +11,15 @@ import placesBlacklist from './json/placesBlacklist.json';
 import topicsBlacklist from './json/topicsBlacklist.json';
 import { getTodayWithTime } from '../utils';
 
+import { defineMessages, FormattedMessage } from 'react-intl';
+
+const messages = defineMessages({
+  includeArchivedContent: {
+    id: 'Include archived content',
+    defaultMessage: 'Include archived content',
+  },
+});
+
 const languageCodes = [
   'en',
   'ar',
@@ -54,7 +63,8 @@ const currentYear = today.getFullYear();
 const facets = [
   booleanFacet(() => ({
     field: 'IncludeArchived',
-    label: 'Include archived content',
+    // label: 'Include archived content',
+    label: messages.includeArchivedContent,
     id: 'archived-facet',
     showInFacetsList: false,
     showInSecondaryFacetsList: true,

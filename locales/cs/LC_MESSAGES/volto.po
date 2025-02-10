@@ -14,24 +14,24 @@ msgstr ""
 #: config/facets
 # defaultMessage: Include archived content
 msgid "Include archived content"
-msgstr "Includi contenuti archiviati"
+msgstr "Zahrnout archivovaný obsah"
 
 #: config/global-search-base-config
 # defaultMessage: Newest
 msgid "Newest"
-msgstr "Più recente"
+msgstr "Nejnovější"
 
 #: config/global-search-base-config
 # defaultMessage: Oldest
 msgid "Oldest"
-msgstr "Il più antico"
+msgstr "Nejstarší"
 
 #: config/global-search-base-config
 # defaultMessage: Title a-z
 msgid "Title a-z"
-msgstr "Titolo dalla a alla z"
+msgstr "Titul a-z"
 
 #: config/global-search-base-config
 # defaultMessage: Title z-a
 msgid "Title z-a"
-msgstr "Titolo z-a"
+msgstr "Titul z-a"
