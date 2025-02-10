@@ -11,7 +11,7 @@ import placesBlacklist from './json/placesBlacklist.json';
 import topicsBlacklist from './json/topicsBlacklist.json';
 import { getTodayWithTime } from '../utils';
 
-import { defineMessages, FormattedMessage } from 'react-intl';
+import { defineMessages } from 'react-intl';
 
 const messages = defineMessages({
   includeArchivedContent: {
