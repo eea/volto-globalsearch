@@ -14,7 +14,7 @@ msgstr ""
 #: config/facets
 # defaultMessage: Include archived content
 msgid "Include archived content"
-msgstr ""
+msgstr "Cuir ábhar cartlainne san áireamh"
 
 #: config/facets
 # defaultMessage: Language
@@ -24,19 +24,19 @@ msgstr "Teanga"
 #: config/global-search-base-config
 # defaultMessage: Newest
 msgid "Newest"
-msgstr ""
+msgstr "is nuaí"
 
 #: config/global-search-base-config
 # defaultMessage: Oldest
 msgid "Oldest"
-msgstr ""
+msgstr "Is sine"
 
 #: config/global-search-base-config
 # defaultMessage: Title a-z
 msgid "Title a-z"
-msgstr ""
+msgstr "Teideal a-z"
 
 #: config/global-search-base-config
 # defaultMessage: Title z-a
 msgid "Title z-a"
-msgstr ""
+msgstr "Teideal z-a"
