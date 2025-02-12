@@ -19,7 +19,7 @@ msgstr ""
 #: config/facets
 # defaultMessage: Language
 msgid "Language"
-msgstr ""
+msgstr "Teanga"
 
 #: config/global-search-base-config
 # defaultMessage: Newest

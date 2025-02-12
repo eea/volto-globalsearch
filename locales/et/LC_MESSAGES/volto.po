@@ -19,7 +19,7 @@ msgstr "Kaasake arhiveeritud sisu"
 #: config/facets
 # defaultMessage: Language
 msgid "Language"
-msgstr ""
+msgstr "Keel"
 
 #: config/global-search-base-config
 # defaultMessage: Newest

@@ -19,7 +19,7 @@ msgstr "Sisällytä arkistoitu sisältö"
 #: config/facets
 # defaultMessage: Language
 msgid "Language"
-msgstr ""
+msgstr "Kieli"
 
 #: config/global-search-base-config
 # defaultMessage: Newest

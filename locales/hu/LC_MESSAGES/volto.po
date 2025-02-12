@@ -19,7 +19,7 @@ msgstr "Tartalmazza az archivált tartalmat"
 #: config/facets
 # defaultMessage: Language
 msgid "Language"
-msgstr ""
+msgstr "Nyelv"
 
 #: config/global-search-base-config
 # defaultMessage: Newest

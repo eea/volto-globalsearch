@@ -19,7 +19,7 @@ msgstr "Įtraukti archyvuotą turinį"
 #: config/facets
 # defaultMessage: Language
 msgid "Language"
-msgstr ""
+msgstr "Kalba"
 
 #: config/global-search-base-config
 # defaultMessage: Newest
