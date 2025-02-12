@@ -16,6 +16,11 @@ msgstr ""
 msgid "Include archived content"
 msgstr "Включете архивирано съдържание"
 
+#: config/facets
+# defaultMessage: Language
+msgid "Language"
+msgstr "език"
+
 #: config/global-search-base-config
 # defaultMessage: Newest
 msgid "Newest"

@@ -16,6 +16,11 @@ msgstr ""
 msgid "Include archived content"
 msgstr "Inclure le contenu archivé"
 
+#: config/facets
+# defaultMessage: Language
+msgid "Language"
+msgstr "Langue"
+
 #: config/global-search-base-config
 # defaultMessage: Newest
 msgid "Newest"
