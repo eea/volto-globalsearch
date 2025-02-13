@@ -31,6 +31,10 @@ const messages = defineMessages({
     id: 'Oldest',
     defaultMessage: 'Oldest',
   },
+  Relevance: {
+    id: 'Relevance',
+    defaultMessage: 'Relevance',
+  },
 });
 
 const globalSearchBaseConfig = {
@@ -84,6 +88,11 @@ const globalSearchBaseConfig = {
     },
   },
   sortOptions: [
+    {
+      name: messages.Relevance,
+      value: '',
+      direction: '',
+    },
     {
       name: messages.sortTitleAZ,
       value: 'title.index',

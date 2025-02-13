@@ -16,6 +16,11 @@ msgstr ""
 msgid "Include archived content"
 msgstr "Tartalmazza az archivált tartalmat"
 
+#: config/facets
+# defaultMessage: Language
+msgid "Language"
+msgstr "Nyelv"
+
 #: config/global-search-base-config
 # defaultMessage: Newest
 msgid "Newest"
@@ -25,6 +30,11 @@ msgstr "Legújabb"
 # defaultMessage: Oldest
 msgid "Oldest"
 msgstr "Legrégebbi"
+
+#: config/global-search-base-config
+# defaultMessage: Relevance
+msgid "Relevance"
+msgstr "Relevancia"
 
 #: config/global-search-base-config
 # defaultMessage: Title a-z

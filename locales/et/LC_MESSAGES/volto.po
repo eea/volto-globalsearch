@@ -16,6 +16,11 @@ msgstr ""
 msgid "Include archived content"
 msgstr "Kaasake arhiveeritud sisu"
 
+#: config/facets
+# defaultMessage: Language
+msgid "Language"
+msgstr "Keel"
+
 #: config/global-search-base-config
 # defaultMessage: Newest
 msgid "Newest"
@@ -25,6 +30,11 @@ msgstr "Uusim"
 # defaultMessage: Oldest
 msgid "Oldest"
 msgstr "Vanim"
+
+#: config/global-search-base-config
+# defaultMessage: Relevance
+msgid "Relevance"
+msgstr ""
 
 #: config/global-search-base-config
 # defaultMessage: Title a-z

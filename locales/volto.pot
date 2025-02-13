@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plone\n"
-"POT-Creation-Date: 2025-02-10T07:30:53.426Z\n"
+"POT-Creation-Date: 2025-02-13T09:14:15.969Z\n"
 "Last-Translator: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -18,6 +18,11 @@ msgstr ""
 msgid "Include archived content"
 msgstr ""
 
+#: config/facets
+# defaultMessage: Language
+msgid "Language"
+msgstr ""
+
 #: config/global-search-base-config
 # defaultMessage: Newest
 msgid "Newest"
@@ -26,6 +31,11 @@ msgstr ""
 #: config/global-search-base-config
 # defaultMessage: Oldest
 msgid "Oldest"
+msgstr ""
+
+#: config/global-search-base-config
+# defaultMessage: Relevance
+msgid "Relevance"
 msgstr ""
 
 #: config/global-search-base-config
