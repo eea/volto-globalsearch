@@ -18,6 +18,10 @@ const messages = defineMessages({
     id: 'Include archived content',
     defaultMessage: 'Include archived content',
   },
+  language: {
+    id: 'Language',
+    defaultMessage: 'Language',
+  },
 });
 
 const languageCodes = [
@@ -275,7 +279,7 @@ const facets = [
     field: 'language',
     isFilterable: false,
     isMulti: true,
-    label: 'Language',
+    label: messages.language,
     default: {
       values: ['en'],
       type: 'any',

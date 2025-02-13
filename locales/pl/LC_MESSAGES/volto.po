@@ -14,24 +14,34 @@ msgstr ""
 #: config/facets
 # defaultMessage: Include archived content
 msgid "Include archived content"
-msgstr ""
+msgstr "Uwzględnij zarchiwizowane treści"
+
+#: config/facets
+# defaultMessage: Language
+msgid "Language"
+msgstr "Języks"
 
 #: config/global-search-base-config
 # defaultMessage: Newest
 msgid "Newest"
-msgstr ""
+msgstr "Najnowszy"
 
 #: config/global-search-base-config
 # defaultMessage: Oldest
 msgid "Oldest"
-msgstr ""
+msgstr "Najstarszy"
+
+#: config/global-search-base-config
+# defaultMessage: Relevance
+msgid "Relevance"
+msgstr "Znaczenie"
 
 #: config/global-search-base-config
 # defaultMessage: Title a-z
 msgid "Title a-z"
-msgstr ""
+msgstr "Tytuł a-z"
 
 #: config/global-search-base-config
 # defaultMessage: Title z-a
 msgid "Title z-a"
-msgstr ""
+msgstr "Tytuł z-a"
