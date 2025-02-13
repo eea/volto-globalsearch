@@ -32,6 +32,11 @@ msgid "Oldest"
 msgstr "Il più antico"
 
 #: config/global-search-base-config
+# defaultMessage: Relevance
+msgid "Relevance"
+msgstr "Rilevanza"
+
+#: config/global-search-base-config
 # defaultMessage: Title a-z
 msgid "Title a-z"
 msgstr "Titolo dalla a alla z"
