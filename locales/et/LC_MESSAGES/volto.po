@@ -34,7 +34,7 @@ msgstr "Vanim"
 #: config/global-search-base-config
 # defaultMessage: Relevance
 msgid "Relevance"
-msgstr ""
+msgstr "Asjakohasus"
 
 #: config/global-search-base-config
 # defaultMessage: Title a-z
