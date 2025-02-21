@@ -34,7 +34,7 @@ msgstr "Is sine"
 #: config/global-search-base-config
 # defaultMessage: Relevance
 msgid "Relevance"
-msgstr ""
+msgstr "Ábharthacht"
 
 #: config/global-search-base-config
 # defaultMessage: Title a-z
