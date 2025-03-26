@@ -1,6 +1,6 @@
 {
   "name": "@eeacms/volto-globalsearch",
-  "version": "2.0.9",
+  "version": "2.0.10",
   "description": "@eeacms/volto-globalsearch: Volto add-on",
   "main": "src/index.js",
   "author": "European Environment Agency: IDM2 A-Team",
@@ -22,7 +22,7 @@
   ],
   "dependencies": {
     "@eeacms/volto-listing-block": "8.1.2",
-    "@eeacms/volto-searchlib": "2.0.13"
+    "@eeacms/volto-searchlib": "2.0.14"
   },
   "devDependencies": {
     "@cypress/code-coverage": "^3.10.0",
