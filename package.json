@@ -22,7 +22,7 @@
   ],
   "dependencies": {
     "@eeacms/volto-listing-block": "8.1.2",
-    "@eeacms/volto-searchlib": "2.0.14"
+    "@eeacms/volto-searchlib": "2.0.15"
   },
   "devDependencies": {
     "@cypress/code-coverage": "^3.10.0",
