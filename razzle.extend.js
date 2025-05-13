@@ -8,23 +8,8 @@ const plugins = (defaultPlugins) => {
 const modify = (config, { target, dev }, webpack) => {
   const fileLoader = config.module.rules.find(fileLoaderFinder);
 
-  fileLoader.exclude = [
-    /\.(config|variables|overrides)$/,
-    /icons\/.*\.svg$/,
-    /\.html$/,
-    /\.(js|jsx|mjs)$/,
-    /\.(ts|tsx)$/,
-    /\.(vue)$/,
-    /\.(less)$/,
-    /\.(re)$/,
-    /\.(s?css|sass)$/,
-    /\.json$/,
-    /\.bmp$/,
-    /\.gif$/,
-    /\.jpe?g$/,
-    // .png files we don't want them in the bundle
-    /static\/\.png$/,
-  ];
+  // .png files we don't want them in the bundle
+  fileLoader.exclude.push(/static\/\.png$/);
 
   return config;
 };
