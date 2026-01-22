@@ -30,6 +30,5 @@
     {
       "start_time_ts": "desc"
     }
-  ],
-  "index": "<index_name>"
+  ]
 }

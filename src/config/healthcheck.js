@@ -10,8 +10,6 @@ import latest_tasks_for_site from './healthcheck_queries/latest_tasks_for_site.j
 import started_or_finished_site_since_last_started from './healthcheck_queries/started_or_finished_site_since_last_started.json';
 
 const default_documentCountThreshold = 60000;
-const default_queryTimeSecondsThreshold_OK = 2;
-const default_queryTimeSecondsThreshold_WARNING = 5;
 const default_failedSyncThreshold_WARNING = 5;
 const default_failedSyncThreshold_OK = 2;
 
@@ -24,11 +22,14 @@ export function buildQuery(query, values) {
 }
 
 async function executeQuery(q, appConfig, params = {}, callback) {
-  params['index_name'] = 'status_' + appConfig['index_name'];
+  const { id, host } = appConfig;
+  const url = new URL(host);
+  url.pathname = `/_es/{status_}${id}/_search`;
   const query = buildQuery(q, params);
-  //console.log(JSON.stringify(query));
-  const resp = await runRequest(query, appConfig);
-  // console.log(JSON.stringify(resp.body));
+  const resp = await runRequest(query, appConfig, url);
+  if (resp.body.error) {
+    console.log(resp.body.error.root_cause);
+  }
   return Promise.resolve(callback(resp.body, params));
 }
 
@@ -101,8 +102,7 @@ export function getlatesttasks_for_site(body, params = {}) {
 export async function getStatus(appConfig, params) {
   let resp = 'OK';
   let error = null;
-  // console.log('=======================================');
-  // console.log('STEP 1');
+  // console.log('==== STEP 1 ====');
   const step1 = await executeQuery(
     last_scheduled_started_indexing,
     appConfig,
@@ -110,16 +110,13 @@ export async function getStatus(appConfig, params) {
     getlastandnext_started_execution,
   );
 
-  // console.log(step1);
-
   // const last_successful_schedule = step1.last_started;
   let next_schedule = step1.next_execution_date;
 
   const now = params.now || Date.now() - 60 * 1000;
   if (now >= next_schedule) {
     try {
-      // console.log('=======================================');
-      // console.log('STEP 2');
+      // console.log('==== STEP 2 ====');
       const step2 = await executeQuery(
         failed_scheduled_atempts_since_last_started,
         appConfig,
@@ -127,7 +124,6 @@ export async function getStatus(appConfig, params) {
         getlastfailed_execution,
       );
       next_schedule = step2.next_execution_date;
-      // console.log(step2);
     } catch {
       resp = 'CRITICAL';
       error = 'Failed to get status info from elasticsearch';
@@ -139,19 +135,17 @@ export async function getStatus(appConfig, params) {
       error = 'Airflow stopped indexing, no new schedules in the queue';
     } else {
       try {
+        // console.log('==== STEP 3 ====');
         const step3 = await executeQuery(
           last_sync_task_since_last_start,
           appConfig,
           step1,
           getlastsynctaskssincestarted,
         );
-        // console.log(step3.sites);
         const all_sites_status = {};
         for (let i = 0; i < step3.sites.length; i++) {
           try {
-            // console.log('=======================================');
-            // console.log('STEP 4');
-            // const step4 =
+            // console.log('==== STEP 4 ====');
             await executeQuery(
               started_or_finished_site_since_last_started,
               appConfig,
@@ -162,10 +156,8 @@ export async function getStatus(appConfig, params) {
               getlastsuccessfultasks_for_site,
             );
             all_sites_status[step3.sites[i]] = 'OK';
-            // console.log(step4);
           } catch {
-            // console.log('=======================================');
-            // console.log('STEP 5');
+            // console.log('==== STEP 5 ====');
             const step5 = await executeQuery(
               latest_tasks_for_site,
               appConfig,
@@ -182,7 +174,6 @@ export async function getStatus(appConfig, params) {
             all_sites_status[step3.sites[i]] = step5;
           }
         }
-        // console.log(all_sites_status);
         const oks = [];
         const warnings = [];
         const criticals = [];
@@ -232,19 +223,12 @@ export default async function healthcheck(appConfig, params) {
   try {
     let {
       documentCountThreshold,
-      queryTimeSecondsThreshold_OK,
-      queryTimeSecondsThreshold_WARNING,
       failedSyncThreshold_OK,
       failedSyncThreshold_WARNING,
       now,
     } = params;
     documentCountThreshold =
       documentCountThreshold || default_documentCountThreshold;
-    queryTimeSecondsThreshold_OK =
-      queryTimeSecondsThreshold_OK || default_queryTimeSecondsThreshold_OK;
-    queryTimeSecondsThreshold_WARNING =
-      queryTimeSecondsThreshold_WARNING ||
-      default_queryTimeSecondsThreshold_WARNING;
     failedSyncThreshold_OK =
       failedSyncThreshold_OK || default_failedSyncThreshold_OK;
     failedSyncThreshold_WARNING =
@@ -256,9 +240,7 @@ export default async function healthcheck(appConfig, params) {
       now: now,
     };
 
-    ///////////////////
     const body_total = buildRequest({ filters: [] }, appConfig);
-    //console.log(body_total);
     const resp_total = await runRequest(body_total, appConfig);
     const total = resp_total.body.hits.total.value;
     const total_status =
@@ -269,41 +251,15 @@ export default async function healthcheck(appConfig, params) {
             error:
               'The number of documents in elasticsearch dropped drastically',
           };
-    const body_nlp = buildRequest(
-      { filters: [], searchTerm: 'what is bise?' },
-      appConfig,
-    );
-    const resp_nlp = await runRequest(body_nlp, appConfig);
-    const elapsed = resp_nlp.body.elapsed;
-
-    let total_elapsed = 0;
-    Object.keys(elapsed).forEach((key) => {
-      elapsed[key].forEach((nlp_step) => {
-        Object.keys(nlp_step).forEach((step_name) => {
-          total_elapsed += nlp_step[step_name].delta;
-        });
-      });
-    });
-
-    const elapsed_status =
-      total_elapsed < queryTimeSecondsThreshold_OK
-        ? { status: 'OK' }
-        : total_elapsed < queryTimeSecondsThreshold_WARNING
-        ? { status: 'WARNING', error: 'Slow response from NLP' }
-        : { status: 'CRITICAL', error: 'Slow response from NLP' };
 
     const airflow_status = await getStatus(appConfig, airflow_params);
 
     let status = { status: 'OK' };
-    if (
-      elapsed_status.status === 'WARNING' ||
-      airflow_status.status === 'WARNING'
-    ) {
+    if (airflow_status.status === 'WARNING') {
       status = { status: 'WARNING' };
     }
     if (
       total_status.status === 'CRITICAL' ||
-      elapsed_status.status === 'CRITICAL' ||
       airflow_status.status === 'CRITICAL'
     ) {
       status = { status: 'CRITICAL' };
@@ -312,9 +268,6 @@ export default async function healthcheck(appConfig, params) {
     const errors_list = [];
     if (total_status.error) {
       errors_list.push(total_status.error);
-    }
-    if (elapsed_status.error) {
-      errors_list.push(elapsed_status.error);
     }
     if (airflow_status.error) {
       errors_list.push(airflow_status.error);
