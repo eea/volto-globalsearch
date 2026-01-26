@@ -27,9 +27,6 @@ async function executeQuery(q, appConfig, params = {}, callback) {
   url.pathname = `/_es/{status_}${id}/_search`;
   const query = buildQuery(q, params);
   const resp = await runRequest(query, appConfig, url);
-  if (resp.body.error) {
-    console.log(resp.body.error.root_cause);
-  }
   return Promise.resolve(callback(resp.body, params));
 }
 
