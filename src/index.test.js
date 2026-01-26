@@ -1,14 +1,16 @@
 import applyConfig from './index';
 import '@testing-library/jest-dom/extend-expect';
 
-jest.mock('./config', () => jest.fn((registry) => ({
-  ...registry,
-  searchui: {
-    ...registry.searchui,
-    globalsearch: { id: 'globalsearch' },
-    globalsearchbase: { id: 'globalsearchbase' },
-  },
-})));
+jest.mock('./config', () =>
+  jest.fn((registry) => ({
+    ...registry,
+    searchui: {
+      ...registry.searchui,
+      globalsearch: { id: 'globalsearch' },
+      globalsearchbase: { id: 'globalsearchbase' },
+    },
+  })),
+);
 
 describe('volto-globalsearch applyConfig', () => {
   let config;

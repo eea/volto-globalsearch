@@ -44,9 +44,10 @@ describe('filters configuration', () => {
     );
     const result = constantScoreFilter();
 
-    const mustNotExistsCondition = result.constant_score.filter.bool.should.find(
-      (s) => s.bool && s.bool.must_not && s.bool.must_not.exists,
-    );
+    const mustNotExistsCondition =
+      result.constant_score.filter.bool.should.find(
+        (s) => s.bool && s.bool.must_not && s.bool.must_not.exists,
+      );
     expect(mustNotExistsCondition).toBeDefined();
     expect(mustNotExistsCondition.bool.must_not.exists.field).toBe('issued');
   });

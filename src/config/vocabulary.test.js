@@ -29,10 +29,39 @@ describe('vocabulary', () => {
 
   it('should have all expected languages', () => {
     const expectedLanguages = [
-      'ar', 'bg', 'bs', 'cs', 'da', 'de', 'el', 'en', 'es', 'et',
-      'fi', 'fr', 'ga', 'hr', 'hu', 'is', 'it', 'lt', 'lv', 'mk',
-      'mt', 'nl', 'no', 'pl', 'pt', 'ro', 'ru', 'sk', 'sl', 'sq',
-      'sr', 'sv', 'tr',
+      'ar',
+      'bg',
+      'bs',
+      'cs',
+      'da',
+      'de',
+      'el',
+      'en',
+      'es',
+      'et',
+      'fi',
+      'fr',
+      'ga',
+      'hr',
+      'hu',
+      'is',
+      'it',
+      'lt',
+      'lv',
+      'mk',
+      'mt',
+      'nl',
+      'no',
+      'pl',
+      'pt',
+      'ro',
+      'ru',
+      'sk',
+      'sl',
+      'sq',
+      'sr',
+      'sv',
+      'tr',
     ];
 
     expectedLanguages.forEach((lang) => {
@@ -42,8 +71,18 @@ describe('vocabulary', () => {
 
   it('should have all expected cluster names', () => {
     const expectedClusters = [
-      'eea', 'fise', 'bise', 'industry', 'energy', 'cca', 'ias',
-      'wise-freshwater', 'wise-marine', 'etc', 'sdi', 'cab',
+      'eea',
+      'fise',
+      'bise',
+      'industry',
+      'energy',
+      'cca',
+      'ias',
+      'wise-freshwater',
+      'wise-marine',
+      'etc',
+      'sdi',
+      'cab',
     ];
 
     expectedClusters.forEach((cluster) => {
