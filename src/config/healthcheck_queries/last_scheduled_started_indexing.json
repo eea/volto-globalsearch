@@ -24,6 +24,5 @@
       "start_time_ts": "desc"
     }
   ],
-  "aggs": {},
-  "index": "<index_name>"
+  "aggs": {}
 }

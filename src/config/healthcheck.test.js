@@ -29,6 +29,15 @@ jest.mock('@eeacms/search', () => ({
   buildRequest: jest.fn(),
 }));
 
+beforeEach(() => {
+  runRequest.mockClear();
+});
+
+const mockAppConfig = {
+  id: 'test_index',
+  host: 'http://localhost:9200',
+};
+
 const query1 = {
   query: {
     bool: {
@@ -253,7 +262,7 @@ describe('test the status of the index', () => {
         //   }),
       );
     const params = { index_name: 'test_index', now: 1695732000000 };
-    const status = await getStatus({}, params);
+    const status = await getStatus(mockAppConfig, params);
     expect(status).toEqual({ status: 'OK' });
   });
 });
@@ -261,20 +270,11 @@ describe('test the status of the index', () => {
 describe('test the healthcheck', () => {
   it('test', async () => {
     runRequest
+      // First call: total document count check
       .mockReturnValueOnce(
         Promise.resolve({ body: { hits: { total: { value: 60001 } } } }),
       )
-      .mockReturnValueOnce(
-        Promise.resolve({
-          body: {
-            elapsed: {
-              step1: [{ query: { delta: 0.5 } }],
-              step2: [{ query: { delta: 0.6 } }],
-            },
-          },
-        }),
-      )
-
+      // getStatus calls:
       .mockReturnValueOnce(
         Promise.resolve({ body: last_scheduled_started_indexing_resp }),
       )
@@ -292,9 +292,14 @@ describe('test the healthcheck', () => {
         Promise.resolve({
           body: started_or_finished_site_since_last_started_resp,
         }),
+      )
+      .mockReturnValueOnce(
+        Promise.resolve({
+          body: started_or_finished_site_since_last_started_resp,
+        }),
       );
     const params = { index_name: 'test_index', now: 1695732000000 };
-    const status = await healthcheck({}, params);
+    const status = await healthcheck(mockAppConfig, params);
     expect(status).toEqual({ status: 'OK' });
   });
 });
