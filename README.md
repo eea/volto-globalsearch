@@ -3,16 +3,16 @@
 [![Releases](https://img.shields.io/github/v/release/eea/volto-globalsearch)](https://github.com/eea/volto-globalsearch/releases)
 
 [![Pipeline](https://ci.eionet.europa.eu/buildStatus/icon?job=volto-addons%2Fvolto-globalsearch%2Fmaster&subject=master)](https://ci.eionet.europa.eu/view/Github/job/volto-addons/job/volto-globalsearch/job/master/display/redirect)
-[![Lines of Code](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-globalsearch-master&metric=ncloc)](https://sonarqube.eea.europa.eu/dashboard?id=volto-globalsearch-master)
-[![Coverage](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-globalsearch-master&metric=coverage)](https://sonarqube.eea.europa.eu/dashboard?id=volto-globalsearch-master)
-[![Bugs](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-globalsearch-master&metric=bugs)](https://sonarqube.eea.europa.eu/dashboard?id=volto-globalsearch-master)
-[![Duplicated Lines (%)](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-globalsearch-master&metric=duplicated_lines_density)](https://sonarqube.eea.europa.eu/dashboard?id=volto-globalsearch-master)
+[![Lines of Code](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-globalsearch&metric=ncloc)](https://sonarqube.eea.europa.eu/dashboard?id=volto-globalsearch)
+[![Coverage](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-globalsearch&metric=coverage)](https://sonarqube.eea.europa.eu/dashboard?id=volto-globalsearch)
+[![Bugs](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-globalsearch&metric=bugs)](https://sonarqube.eea.europa.eu/dashboard?id=volto-globalsearch)
+[![Duplicated Lines (%)](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-globalsearch&metric=duplicated_lines_density)](https://sonarqube.eea.europa.eu/dashboard?id=volto-globalsearch)
 
 [![Pipeline](https://ci.eionet.europa.eu/buildStatus/icon?job=volto-addons%2Fvolto-globalsearch%2Fdevelop&subject=develop)](https://ci.eionet.europa.eu/view/Github/job/volto-addons/job/volto-globalsearch/job/develop/display/redirect)
-[![Lines of Code](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-globalsearch-develop&metric=ncloc)](https://sonarqube.eea.europa.eu/dashboard?id=volto-globalsearch-develop)
-[![Coverage](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-globalsearch-develop&metric=coverage)](https://sonarqube.eea.europa.eu/dashboard?id=volto-globalsearch-develop)
-[![Bugs](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-globalsearch-develop&metric=bugs)](https://sonarqube.eea.europa.eu/dashboard?id=volto-globalsearch-develop)
-[![Duplicated Lines (%)](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-globalsearch-develop&metric=duplicated_lines_density)](https://sonarqube.eea.europa.eu/dashboard?id=volto-globalsearch-develop)
+[![Lines of Code](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-globalsearch&branch=develop&metric=ncloc)](https://sonarqube.eea.europa.eu/dashboard?id=volto-globalsearch&branch=develop)
+[![Coverage](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-globalsearch&branch=develop&metric=coverage)](https://sonarqube.eea.europa.eu/dashboard?id=volto-globalsearch&branch=develop)
+[![Bugs](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-globalsearch&branch=develop&metric=bugs)](https://sonarqube.eea.europa.eu/dashboard?id=volto-globalsearch&branch=develop)
+[![Duplicated Lines (%)](https://sonarqube.eea.europa.eu/api/project_badges/measure?project=volto-globalsearch&branch=develop&metric=duplicated_lines_density)](https://sonarqube.eea.europa.eu/dashboard?id=volto-globalsearch&branch=develop)
 
 EEA Elastic Search Block with NLP integration [Volto](https://github.com/plone/volto) add-on
 
