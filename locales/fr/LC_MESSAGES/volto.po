@@ -11,37 +11,37 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+#. Default: "Include archived content"
 #: config/facets
-# defaultMessage: Include archived content
 msgid "Include archived content"
 msgstr "Inclure le contenu archivé"
 
+#. Default: "Language"
 #: config/facets
-# defaultMessage: Language
 msgid "Language"
 msgstr "Langue"
 
+#. Default: "Newest"
 #: config/global-search-base-config
-# defaultMessage: Newest
 msgid "Newest"
 msgstr "Le plus récent"
 
+#. Default: "Oldest"
 #: config/global-search-base-config
-# defaultMessage: Oldest
 msgid "Oldest"
 msgstr "Le plus ancien"
 
+#. Default: "Relevance"
 #: config/global-search-base-config
-# defaultMessage: Relevance
 msgid "Relevance"
 msgstr "Pertinence"
 
+#. Default: "Title a-z"
 #: config/global-search-base-config
-# defaultMessage: Title a-z
 msgid "Title a-z"
 msgstr "Titre a à z"
 
+#. Default: "Title z-a"
 #: config/global-search-base-config
-# defaultMessage: Title z-a
 msgid "Title z-a"
 msgstr "Titre z-a"
