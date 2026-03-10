@@ -1,5 +1,5 @@
 import vocabWrapper from './vocabulary';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 
 describe('vocabulary', () => {
   it('should export vocab wrapper object', () => {

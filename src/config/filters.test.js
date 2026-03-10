@@ -1,5 +1,5 @@
 import filters from './filters';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 
 describe('filters configuration', () => {
   it('should export filters object', () => {

@@ -6,7 +6,7 @@ import {
   get_cluster_icons,
   get_cluster_icons_dict,
 } from './utils';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 
 describe('build_runtime_mappings', () => {
   it('should build runtime mappings based on settings', () => {
