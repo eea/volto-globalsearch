@@ -1,7 +1,7 @@
 import install from './index';
 import globalSearchConfig from './global-search-config.js';
 
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 
 const SLOTS = [
   'aboveSearchInput',

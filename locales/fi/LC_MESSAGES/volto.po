@@ -11,37 +11,37 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+#. Default: "Include archived content"
 #: config/facets
-# defaultMessage: Include archived content
 msgid "Include archived content"
 msgstr "Sisällytä arkistoitu sisältö"
 
+#. Default: "Language"
 #: config/facets
-# defaultMessage: Language
 msgid "Language"
 msgstr "Kieli"
 
+#. Default: "Newest"
 #: config/global-search-base-config
-# defaultMessage: Newest
 msgid "Newest"
 msgstr "Uusin"
 
+#. Default: "Oldest"
 #: config/global-search-base-config
-# defaultMessage: Oldest
 msgid "Oldest"
 msgstr "Vanhin"
 
+#. Default: "Relevance"
 #: config/global-search-base-config
-# defaultMessage: Relevance
 msgid "Relevance"
 msgstr "Relevanssi"
 
+#. Default: "Title a-z"
 #: config/global-search-base-config
-# defaultMessage: Title a-z
 msgid "Title a-z"
 msgstr "Otsikko a-z"
 
+#. Default: "Title z-a"
 #: config/global-search-base-config
-# defaultMessage: Title z-a
 msgid "Title z-a"
 msgstr "Otsikko z-a"

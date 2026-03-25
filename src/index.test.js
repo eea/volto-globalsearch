@@ -1,5 +1,5 @@
 import applyConfig from './index';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 
 jest.mock('./config', () =>
   jest.fn((registry) => ({

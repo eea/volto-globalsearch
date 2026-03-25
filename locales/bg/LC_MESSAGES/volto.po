@@ -11,37 +11,37 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
+#. Default: "Include archived content"
 #: config/facets
-# defaultMessage: Include archived content
 msgid "Include archived content"
 msgstr "Включете архивирано съдържание"
 
+#. Default: "Language"
 #: config/facets
-# defaultMessage: Language
 msgid "Language"
 msgstr "език"
 
+#. Default: "Newest"
 #: config/global-search-base-config
-# defaultMessage: Newest
 msgid "Newest"
 msgstr "Най-новите"
 
+#. Default: "Oldest"
 #: config/global-search-base-config
-# defaultMessage: Oldest
 msgid "Oldest"
 msgstr "Най-старият"
 
+#. Default: "Relevance"
 #: config/global-search-base-config
-# defaultMessage: Relevance
 msgid "Relevance"
 msgstr "Уместност"
 
+#. Default: "Title a-z"
 #: config/global-search-base-config
-# defaultMessage: Title a-z
 msgid "Title a-z"
 msgstr "Заглавие a-z"
 
+#. Default: "Title z-a"
 #: config/global-search-base-config
-# defaultMessage: Title z-a
 msgid "Title z-a"
 msgstr "Заглавие z-a"
