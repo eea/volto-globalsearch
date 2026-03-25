@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import LandingPage from './MasonryLandingPage';
 import { runRequest } from '@eeacms/search';
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 
 jest.mock('@eeacms/search', () => ({
   runRequest: jest.fn(),
