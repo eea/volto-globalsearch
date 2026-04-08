@@ -7,41 +7,115 @@ import config, {
 } from './clusters';
 
 // Mock static image imports
-jest.mock('../static/website-logo.png', () => 'website-logo.png', {
-  virtual: true,
-});
-jest.mock('../static/eea-logo.svg', () => 'eea-logo.svg', { virtual: true });
-jest.mock('../static/ias-logo.png', () => 'ias-logo.png', { virtual: true });
-jest.mock('../static/bise-logo.png', () => 'bise-logo.png', { virtual: true });
-jest.mock('../static/wise-logo.png', () => 'wise-logo.png', { virtual: true });
-jest.mock('../static/energy-logo.png', () => 'energy-logo.png', {
-  virtual: true,
-});
-jest.mock('../static/water-logo.png', () => 'water-logo.png', {
-  virtual: true,
-});
-jest.mock('../static/forest-logo.png', () => 'forest-logo.png', {
-  virtual: true,
-});
-jest.mock('../static/industry-logo.png', () => 'industry-logo.png', {
-  virtual: true,
-});
-jest.mock('../static/climate-adapt-logo.png', () => 'climate-adapt-logo.png', {
-  virtual: true,
-});
-jest.mock('../static/eionet-logo.png', () => 'eionet-logo.png', {
-  virtual: true,
-});
-jest.mock('../static/etc-atni.png', () => 'etc-atni.png', { virtual: true });
-jest.mock('../static/etc-bd.jpg', () => 'etc-bd.jpg', { virtual: true });
-jest.mock('../static/etc-cca.jpeg', () => 'etc-cca.jpeg', { virtual: true });
-jest.mock('../static/etc-cme.png', () => 'etc-cme.png', { virtual: true });
-jest.mock('../static/etc-icm.jpg', () => 'etc-icm.jpg', { virtual: true });
-jest.mock('../static/etc-uls.png', () => 'etc-uls.png', { virtual: true });
-jest.mock('../static/etc-wmge.png', () => 'etc-wmge.png', { virtual: true });
-jest.mock('../static/cab-logo.png', () => 'cab-logo.png', { virtual: true });
 jest.mock(
-  '../static/copernicus_insitu_logo.svg',
+  '@eeacms/volto-globalsearch/static/website-logo.png',
+  () => 'website-logo.png',
+  {
+    virtual: true,
+  },
+);
+jest.mock(
+  '@eeacms/volto-globalsearch/static/eea-logo.svg',
+  () => 'eea-logo.svg',
+  { virtual: true },
+);
+jest.mock(
+  '@eeacms/volto-globalsearch/static/ias-logo.png',
+  () => 'ias-logo.png',
+  { virtual: true },
+);
+jest.mock(
+  '@eeacms/volto-globalsearch/static/bise-logo.png',
+  () => 'bise-logo.png',
+  { virtual: true },
+);
+jest.mock(
+  '@eeacms/volto-globalsearch/static/wise-logo.png',
+  () => 'wise-logo.png',
+  { virtual: true },
+);
+jest.mock(
+  '@eeacms/volto-globalsearch/static/energy-logo.png',
+  () => 'energy-logo.png',
+  {
+    virtual: true,
+  },
+);
+jest.mock(
+  '@eeacms/volto-globalsearch/static/water-logo.png',
+  () => 'water-logo.png',
+  {
+    virtual: true,
+  },
+);
+jest.mock(
+  '@eeacms/volto-globalsearch/static/forest-logo.png',
+  () => 'forest-logo.png',
+  {
+    virtual: true,
+  },
+);
+jest.mock(
+  '@eeacms/volto-globalsearch/static/industry-logo.png',
+  () => 'industry-logo.png',
+  {
+    virtual: true,
+  },
+);
+jest.mock(
+  '@eeacms/volto-globalsearch/static/climate-adapt-logo.png',
+  () => 'climate-adapt-logo.png',
+  {
+    virtual: true,
+  },
+);
+jest.mock(
+  '@eeacms/volto-globalsearch/static/eionet-logo.png',
+  () => 'eionet-logo.png',
+  {
+    virtual: true,
+  },
+);
+jest.mock(
+  '@eeacms/volto-globalsearch/static/etc-atni.png',
+  () => 'etc-atni.png',
+  { virtual: true },
+);
+jest.mock('@eeacms/volto-globalsearch/static/etc-bd.jpg', () => 'etc-bd.jpg', {
+  virtual: true,
+});
+jest.mock(
+  '@eeacms/volto-globalsearch/static/etc-cca.jpeg',
+  () => 'etc-cca.jpeg',
+  { virtual: true },
+);
+jest.mock(
+  '@eeacms/volto-globalsearch/static/etc-cme.png',
+  () => 'etc-cme.png',
+  { virtual: true },
+);
+jest.mock(
+  '@eeacms/volto-globalsearch/static/etc-icm.jpg',
+  () => 'etc-icm.jpg',
+  { virtual: true },
+);
+jest.mock(
+  '@eeacms/volto-globalsearch/static/etc-uls.png',
+  () => 'etc-uls.png',
+  { virtual: true },
+);
+jest.mock(
+  '@eeacms/volto-globalsearch/static/etc-wmge.png',
+  () => 'etc-wmge.png',
+  { virtual: true },
+);
+jest.mock(
+  '@eeacms/volto-globalsearch/static/cab-logo.png',
+  () => 'cab-logo.png',
+  { virtual: true },
+);
+jest.mock(
+  '@eeacms/volto-globalsearch/static/copernicus_insitu_logo.svg',
   () => 'copernicus_insitu_logo.svg',
   { virtual: true },
 );

@@ -9,7 +9,7 @@ import {
 import spatialWhitelist from './json/spatialWhitelist.json';
 import placesBlacklist from './json/placesBlacklist.json';
 import topicsBlacklist from './json/topicsBlacklist.json';
-import { getTodayWithTime } from '../utils';
+import { getTodayWithTime } from '@eeacms/volto-globalsearch/utils';
 
 import { defineMessages } from 'react-intl';
 

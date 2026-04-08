@@ -3,12 +3,12 @@ import Masonry from 'react-masonry-component';
 
 import { runRequest } from '@eeacms/search';
 
-import objectProvidesWhitelist from '../config/json/objectProvidesWhitelist.json';
-import spatialWhitelist from '../config/json/spatialWhitelist.json';
+import objectProvidesWhitelist from '@eeacms/volto-globalsearch/config/json/objectProvidesWhitelist.json';
+import spatialWhitelist from '@eeacms/volto-globalsearch/config/json/spatialWhitelist.json';
 
-import { getTodayWithTime } from '../utils';
+import { getTodayWithTime } from '@eeacms/volto-globalsearch/utils';
 
-import '../styles/masonry-landing-page.less';
+import '@eeacms/volto-globalsearch/styles/masonry-landing-page.less';
 
 const RES_REQUEST = {
   // es_query_metadata: {

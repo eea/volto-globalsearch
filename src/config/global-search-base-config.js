@@ -1,4 +1,4 @@
-import { build_runtime_mappings } from '../utils';
+import { build_runtime_mappings } from '@eeacms/volto-globalsearch/utils';
 import clusterParams, { clusters } from './clusters';
 
 import facets from './facets';
