@@ -1,4 +1,4 @@
-import { getTodayWithTime } from '../utils';
+import { getTodayWithTime } from '@eeacms/volto-globalsearch/utils';
 function constantScore() {
   return {
     constant_score: {
