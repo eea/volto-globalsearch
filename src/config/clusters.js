@@ -1,4 +1,7 @@
-import { get_cluster_icons_dict, get_cluster_icons } from '../utils';
+import {
+  get_cluster_icons_dict,
+  get_cluster_icons,
+} from '@eeacms/volto-globalsearch/utils';
 
 export const clusters = {
   name: 'op_cluster',
@@ -75,79 +78,79 @@ const config = {
     'Content types': get_cluster_icons_dict(clusters),
     Sources: {
       fallback: {
-        url: require('../static/website-logo.png'),
+        url: require('@eeacms/volto-globalsearch/static/website-logo.png'),
       },
       eea: {
-        url: require('../static/eea-logo.svg'),
+        url: require('@eeacms/volto-globalsearch/static/eea-logo.svg'),
       },
       ias: {
-        url: require('../static/ias-logo.png'),
+        url: require('@eeacms/volto-globalsearch/static/ias-logo.png'),
       },
       bise: {
-        url: require('../static/bise-logo.png'),
+        url: require('@eeacms/volto-globalsearch/static/bise-logo.png'),
       },
       'wise-marine': {
-        url: require('../static/wise-logo.png'),
+        url: require('@eeacms/volto-globalsearch/static/wise-logo.png'),
       },
       energy: {
-        url: require('../static/energy-logo.png'),
+        url: require('@eeacms/volto-globalsearch/static/energy-logo.png'),
       },
       'wise-freshwater': {
-        url: require('../static/water-logo.png'),
+        url: require('@eeacms/volto-globalsearch/static/water-logo.png'),
       },
       fise: {
-        url: require('../static/forest-logo.png'),
+        url: require('@eeacms/volto-globalsearch/static/forest-logo.png'),
       },
       industry: {
-        url: require('../static/industry-logo.png'),
+        url: require('@eeacms/volto-globalsearch/static/industry-logo.png'),
       },
       cca: {
-        url: require('../static/climate-adapt-logo.png'),
+        url: require('@eeacms/volto-globalsearch/static/climate-adapt-logo.png'),
       },
       etc: {
-        url: require('../static/eionet-logo.png'),
+        url: require('@eeacms/volto-globalsearch/static/eionet-logo.png'),
       },
       'etc-atni': {
-        url: require('../static/etc-atni.png'),
+        url: require('@eeacms/volto-globalsearch/static/etc-atni.png'),
       },
 
       'etc-bd': {
-        url: require('../static/etc-bd.jpg'),
+        url: require('@eeacms/volto-globalsearch/static/etc-bd.jpg'),
       },
 
       'etc-cca': {
-        url: require('../static/etc-cca.jpeg'),
+        url: require('@eeacms/volto-globalsearch/static/etc-cca.jpeg'),
       },
 
       'etc-cme': {
-        url: require('../static/etc-cme.png'),
+        url: require('@eeacms/volto-globalsearch/static/etc-cme.png'),
       },
 
       'etc-icm': {
-        url: require('../static/etc-icm.jpg'),
+        url: require('@eeacms/volto-globalsearch/static/etc-icm.jpg'),
       },
 
       'etc-uls': {
-        url: require('../static/etc-uls.png'),
+        url: require('@eeacms/volto-globalsearch/static/etc-uls.png'),
       },
 
       'etc-wmge': {
-        url: require('../static/etc-wmge.png'),
+        url: require('@eeacms/volto-globalsearch/static/etc-wmge.png'),
       },
       sdi: {
-        url: require('../static/eea-logo.svg'),
+        url: require('@eeacms/volto-globalsearch/static/eea-logo.svg'),
       },
       cab: {
-        url: require('../static/cab-logo.png'),
+        url: require('@eeacms/volto-globalsearch/static/cab-logo.png'),
       },
       discomap: {
-        url: require('../static/eea-logo.svg'),
+        url: require('@eeacms/volto-globalsearch/static/eea-logo.svg'),
       },
       noise: {
-        url: require('../static/eea-logo.svg'),
+        url: require('@eeacms/volto-globalsearch/static/eea-logo.svg'),
       },
       copernicus_insitu: {
-        url: require('../static/copernicus_insitu_logo.svg'),
+        url: require('@eeacms/volto-globalsearch/static/copernicus_insitu_logo.svg'),
       },
     },
     Countries: {
