@@ -340,6 +340,15 @@ const facets = [
     isMulti: true,
     label: 'Publishers',
   }),
+  multiTermFacet({
+    field: 'publication_type.keyword',
+    isFilterable: true,
+    isMulti: true,
+    label: 'Publication type',
+    show: 10000,
+    showAllOptions: true, // show all options (even if 0) in modal facet
+    alwaysVisible: true,
+  }),
 ];
 
 const facetsWrapper = {
