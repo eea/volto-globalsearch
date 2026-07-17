@@ -345,6 +345,7 @@ const facets = [
     isFilterable: true,
     isMulti: true,
     label: 'Publication type',
+    blacklist: ['Technical paper'],
     show: 10000,
   }),
 ];
