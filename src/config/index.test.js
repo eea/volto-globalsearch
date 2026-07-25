@@ -24,6 +24,10 @@ jest.mock('@eeacms/search', () => ({
   SLOTS: SLOTS,
 }));
 
+jest.mock('@eeacms/volto-listing-block', () => ({
+  UniversalCard: jest.fn(),
+}));
+
 jest.mock('./facets', () => ({
   facets: [],
 }));
