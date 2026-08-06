@@ -340,6 +340,14 @@ const facets = [
     isMulti: true,
     label: 'Publishers',
   }),
+  multiTermFacet({
+    field: 'publication_type.keyword',
+    isFilterable: true,
+    isMulti: true,
+    label: 'Publication type',
+    blacklist: ['Technical paper'],
+    show: 10000,
+  }),
 ];
 
 const facetsWrapper = {

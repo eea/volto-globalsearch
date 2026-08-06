@@ -50,6 +50,10 @@ const globalSearchBaseConfig = {
   healthcheck: 'getGlobalSearchHealthcheck',
   getActiveFilters: 'getGlobalSearchActiveFilters',
 
+  resultItemModel: {
+    factory: 'GlobalsearchResultModel',
+  },
+
   ...vocabs,
   ...facets,
   ...views,

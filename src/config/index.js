@@ -4,6 +4,7 @@ import {
   isFilterValueDefaultValue,
 } from '@eeacms/search';
 import { getGlobalsearchThumbUrl, getGlobalsearchIconUrl } from './../utils';
+import { GlobalsearchResultModel } from './../models';
 import healthcheck from './healthcheck';
 
 import { typesForClustersOptionsFilter } from './clusters';
@@ -124,6 +125,7 @@ export default function install(config) {
   };
 
   config.resolve.getGlobalSearchActiveFilters = getActiveFilters;
+  config.resolve.GlobalsearchResultModel = GlobalsearchResultModel;
 
   // config.resolve.WebsiteFilterListComponent = {
   //   component: WebsiteFilterListComponent,
