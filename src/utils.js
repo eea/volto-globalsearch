@@ -165,6 +165,8 @@ export const getGlobalsearchThumbUrl =
       result.about?.raw?.indexOf('://climate-energy.eea.europa.eu') !== -1 ||
       result.about?.raw?.indexOf('://industry.eea.europa.eu') !== -1 ||
       result.about?.raw?.indexOf('://www.eea.europa.eu/en/') !== -1 ||
+      result.about?.raw?.indexOf('://demo-www.eea.europa.eu/en/') !== -1 ||
+      result.about?.raw?.indexOf('://staging.eea.europa.eu/en/') !== -1 ||
       result.about?.raw?.indexOf('://water.europa.eu') !== -1
     ) {
       if (result.image_preview) {
