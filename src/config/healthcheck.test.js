@@ -17,16 +17,16 @@ import last_sync_task_since_last_start_resp from './healthcheck_queries/last_syn
 import latest_tasks_for_site_resp from './healthcheck_queries/latest_tasks_for_site_resp.json';
 import started_or_finished_site_since_last_started_resp from './healthcheck_queries/started_or_finished_site_since_last_started_resp.json';
 import empty_resp from './healthcheck_queries/empty_resp.json';
-const SLOTS = [
+const SLOTS = vi.hoisted(() => [
   'aboveSearchInput',
   'belowSearchInput',
   'aboveResults',
   'belowResults',
-];
-jest.mock('@eeacms/search', () => ({
+]);
+vi.mock('@eeacms/search', () => ({
   SLOTS: SLOTS,
-  runRequest: jest.fn(),
-  buildRequest: jest.fn(),
+  runRequest: vi.fn(),
+  buildRequest: vi.fn(),
 }));
 
 beforeEach(() => {
