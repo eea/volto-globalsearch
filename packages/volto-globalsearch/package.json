@@ -31,6 +31,7 @@
     "react-masonry-component": "6.3.0"
   },
   "devDependencies": {
+    "@eeacms/search": "^0.2.31",
     "@cypress/code-coverage": "^3.10.0",
     "@plone/scripts": "workspace:*",
     "@testing-library/jest-dom": "6.9.1",

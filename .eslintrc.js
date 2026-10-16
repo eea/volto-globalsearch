@@ -19,7 +19,9 @@ const addonAliases = Object.keys(registry.packages).map((o) => [
 module.exports = {
   extends: `${coreLocation}/packages/volto/.eslintrc`,
   rules: {
-    'import/no-unresolved': 1,
+    // `@eeacms/search/lib/*` only exists in the consumer project, where the
+    // package is aliased to the in-repo searchlib sources.
+    'import/no-unresolved': [1, { ignore: ['^@eeacms/search/lib/'] }],
   },
   settings: {
     'import/resolver': {
