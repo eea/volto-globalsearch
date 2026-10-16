@@ -4,8 +4,8 @@ import LandingPage from './MasonryLandingPage';
 import { runRequest } from '@eeacms/search';
 import '@testing-library/jest-dom';
 
-jest.mock('@eeacms/search', () => ({
-  runRequest: jest.fn(),
+vi.mock('@eeacms/search', () => ({
+  runRequest: vi.fn(),
 }));
 
 describe('LandingPage', () => {
