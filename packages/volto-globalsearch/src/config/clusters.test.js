@@ -7,116 +7,120 @@ import config, {
 } from './clusters';
 
 // Mock static image imports
-jest.mock(
+vi.mock(
   '@eeacms/volto-globalsearch/static/website-logo.png',
-  () => 'website-logo.png',
+  () => ({ default: 'website-logo.png' }),
   {
     virtual: true,
   },
 );
-jest.mock(
+vi.mock(
   '@eeacms/volto-globalsearch/static/eea-logo.svg',
-  () => 'eea-logo.svg',
+  () => ({ default: 'eea-logo.svg' }),
   { virtual: true },
 );
-jest.mock(
+vi.mock(
   '@eeacms/volto-globalsearch/static/ias-logo.png',
-  () => 'ias-logo.png',
+  () => ({ default: 'ias-logo.png' }),
   { virtual: true },
 );
-jest.mock(
+vi.mock(
   '@eeacms/volto-globalsearch/static/bise-logo.png',
-  () => 'bise-logo.png',
+  () => ({ default: 'bise-logo.png' }),
   { virtual: true },
 );
-jest.mock(
+vi.mock(
   '@eeacms/volto-globalsearch/static/wise-logo.png',
-  () => 'wise-logo.png',
+  () => ({ default: 'wise-logo.png' }),
   { virtual: true },
 );
-jest.mock(
+vi.mock(
   '@eeacms/volto-globalsearch/static/energy-logo.png',
-  () => 'energy-logo.png',
+  () => ({ default: 'energy-logo.png' }),
   {
     virtual: true,
   },
 );
-jest.mock(
+vi.mock(
   '@eeacms/volto-globalsearch/static/water-logo.png',
-  () => 'water-logo.png',
+  () => ({ default: 'water-logo.png' }),
   {
     virtual: true,
   },
 );
-jest.mock(
+vi.mock(
   '@eeacms/volto-globalsearch/static/forest-logo.png',
-  () => 'forest-logo.png',
+  () => ({ default: 'forest-logo.png' }),
   {
     virtual: true,
   },
 );
-jest.mock(
+vi.mock(
   '@eeacms/volto-globalsearch/static/industry-logo.png',
-  () => 'industry-logo.png',
+  () => ({ default: 'industry-logo.png' }),
   {
     virtual: true,
   },
 );
-jest.mock(
+vi.mock(
   '@eeacms/volto-globalsearch/static/climate-adapt-logo.png',
-  () => 'climate-adapt-logo.png',
+  () => ({ default: 'climate-adapt-logo.png' }),
   {
     virtual: true,
   },
 );
-jest.mock(
+vi.mock(
   '@eeacms/volto-globalsearch/static/eionet-logo.png',
-  () => 'eionet-logo.png',
+  () => ({ default: 'eionet-logo.png' }),
   {
     virtual: true,
   },
 );
-jest.mock(
+vi.mock(
   '@eeacms/volto-globalsearch/static/etc-atni.png',
-  () => 'etc-atni.png',
+  () => ({ default: 'etc-atni.png' }),
   { virtual: true },
 );
-jest.mock('@eeacms/volto-globalsearch/static/etc-bd.jpg', () => 'etc-bd.jpg', {
-  virtual: true,
-});
-jest.mock(
+vi.mock(
+  '@eeacms/volto-globalsearch/static/etc-bd.jpg',
+  () => ({ default: 'etc-bd.jpg' }),
+  {
+    virtual: true,
+  },
+);
+vi.mock(
   '@eeacms/volto-globalsearch/static/etc-cca.jpeg',
-  () => 'etc-cca.jpeg',
+  () => ({ default: 'etc-cca.jpeg' }),
   { virtual: true },
 );
-jest.mock(
+vi.mock(
   '@eeacms/volto-globalsearch/static/etc-cme.png',
-  () => 'etc-cme.png',
+  () => ({ default: 'etc-cme.png' }),
   { virtual: true },
 );
-jest.mock(
+vi.mock(
   '@eeacms/volto-globalsearch/static/etc-icm.jpg',
-  () => 'etc-icm.jpg',
+  () => ({ default: 'etc-icm.jpg' }),
   { virtual: true },
 );
-jest.mock(
+vi.mock(
   '@eeacms/volto-globalsearch/static/etc-uls.png',
-  () => 'etc-uls.png',
+  () => ({ default: 'etc-uls.png' }),
   { virtual: true },
 );
-jest.mock(
+vi.mock(
   '@eeacms/volto-globalsearch/static/etc-wmge.png',
-  () => 'etc-wmge.png',
+  () => ({ default: 'etc-wmge.png' }),
   { virtual: true },
 );
-jest.mock(
+vi.mock(
   '@eeacms/volto-globalsearch/static/cab-logo.png',
-  () => 'cab-logo.png',
+  () => ({ default: 'cab-logo.png' }),
   { virtual: true },
 );
-jest.mock(
+vi.mock(
   '@eeacms/volto-globalsearch/static/copernicus_insitu_logo.svg',
-  () => 'copernicus_insitu_logo.svg',
+  () => ({ default: 'copernicus_insitu_logo.svg' }),
   { virtual: true },
 );
 

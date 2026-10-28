@@ -3,37 +3,39 @@ import globalSearchConfig from './global-search-config.js';
 
 import '@testing-library/jest-dom';
 
-const SLOTS = [
+const SLOTS = vi.hoisted(() => [
   'aboveSearchInput',
   'belowSearchInput',
   'aboveResults',
   'belowResults',
-];
+]);
 
-jest.mock('@eeacms/search', () => ({
-  runRequest: jest.fn(),
-  booleanFacet: jest.fn(),
-  multiTermFacet: jest.fn(),
-  makeRange: jest.fn(),
-  histogramFacet: jest.fn(),
-  fixedRangeFacet: jest.fn(),
-  dateRangeFacet: jest.fn(),
-  mergeConfig: jest.fn((config) => config),
-  suiFacet: jest.fn(),
-  isFilterValueDefaultValue: jest.fn(),
+vi.mock('@eeacms/search', () => ({
+  runRequest: vi.fn(),
+  booleanFacet: vi.fn(),
+  multiTermFacet: vi.fn(),
+  makeRange: vi.fn(),
+  histogramFacet: vi.fn(),
+  fixedRangeFacet: vi.fn(),
+  dateRangeFacet: vi.fn(),
+  mergeConfig: vi.fn((config) => config),
+  suiFacet: vi.fn(),
+  isFilterValueDefaultValue: vi.fn(),
   SLOTS: SLOTS,
 }));
 
-jest.mock('@eeacms/volto-listing-block', () => ({
-  UniversalCard: jest.fn(),
+vi.mock('@eeacms/volto-listing-block', () => ({
+  UniversalCard: vi.fn(),
 }));
 
-jest.mock('./facets', () => ({
-  facets: [],
+vi.mock('./facets', () => ({
+  default: { facets: [] },
 }));
 
-jest.mock('./clusters', () => ({
-  typesForClustersOptionsFilter: jest.fn(),
+vi.mock('./clusters', () => ({
+  default: {},
+  clusterIcons: {},
+  typesForClustersOptionsFilter: vi.fn(),
   clusters: {
     name: 'op_cluster',
     field: 'objectProvides',
