@@ -1,8 +1,8 @@
 import applyConfig from './index';
 import '@testing-library/jest-dom';
 
-jest.mock('./config', () =>
-  jest.fn((registry) => ({
+vi.mock('./config', () => ({
+  default: vi.fn((registry) => ({
     ...registry,
     searchui: {
       ...registry.searchui,
@@ -10,7 +10,7 @@ jest.mock('./config', () =>
       globalsearchbase: { id: 'globalsearchbase' },
     },
   })),
-);
+}));
 
 describe('volto-globalsearch applyConfig', () => {
   let config;
