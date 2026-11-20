@@ -6,6 +6,21 @@
 
 EEA Elastic Search Block with NLP integration [Volto](https://github.com/plone/volto) add-on
 
+## Upgrade
+
+### Upgrading to 5.x
+
+> This version requires `Volto 18` or `Volto 19` and Node.js 22.
+
+The public API is unchanged, so a site on 4.x needs no code changes beyond the peers below. The release adds Volto 19 support and moves the published package to `packages/volto-globalsearch`.
+
+#### Breaking changes
+
+- **Node.js 22 or newer is required** (`engines.node >= 22`).
+- **React 18 is required.** The package declares `react` and `react-dom` as `^18.2.0` peers.
+
+The cluster logos are static imports now, with the same keys and URLs. The search library stays declared as `*`, so a Volto 19 site needs `@eeacms/volto-searchlib` 8.x to match this release.
+
 ## Features
 
 ![Globalsearch](https://raw.githubusercontent.com/eea/volto-globalsearch/master/docs/volto-globalsearch.gif)
